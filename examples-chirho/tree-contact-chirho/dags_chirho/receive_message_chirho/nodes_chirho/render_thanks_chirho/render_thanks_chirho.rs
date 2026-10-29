@@ -1,0 +1,1 @@
+../../../../src/implementations_chirho/render_thanks_chirho.rs

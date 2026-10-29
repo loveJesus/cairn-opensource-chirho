@@ -1,0 +1,58 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+# Local-only two-root product journey. Tenant/auth is on 8788; public rendering is on 8789.
+# Derived from the pinned edge's routing and privacy rules, not its host configuration or evidence.
+{
+	admin off
+	auto_https off
+}
+
+http://127.0.0.1:9080 {
+	encode zstd gzip
+	header ?Cache-Control "private, no-store"
+
+	log {
+		output stdout
+		format filter {
+			request>remote_ip delete
+			request>remote_port delete
+			request>client_ip delete
+			request>headers delete
+			request>tls delete
+			request>host delete
+			request>uri regexp "\?.*$" ""
+			bytes_read delete
+			size delete
+			user_id delete
+			resp_headers delete
+		}
+	}
+
+	@bare_chirho path /
+	@login_get_chirho {
+		method GET HEAD
+		path /auth-chirho/login-chirho
+	}
+	@tenant_chirho path /auth-chirho/* /app-chirho/perffection-workspace /app-chirho/perffection-workspace/* /app-assets-chirho/perffection-workspace /app-assets-chirho/perffection-workspace/* /healthz-chirho /healthz
+	@public_chirho path /app-chirho/* /app-assets-chirho/*
+
+	route {
+		redir @bare_chirho /app-chirho/perffection/login-chirho 302
+		redir @login_get_chirho /app-chirho/perffection/login-chirho{?query} 302
+
+		handle @tenant_chirho {
+			reverse_proxy 127.0.0.1:8788
+		}
+		handle @public_chirho {
+			reverse_proxy 127.0.0.1:8789 {
+				header_up -Cookie
+				header_up -Authorization
+			}
+		}
+		respond 404
+	}
+
+	handle_errors {
+		header Cache-Control "private, no-store"
+		respond "" {err.status_code}
+	}
+}

@@ -1,0 +1,48 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-writer-elector-http-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "HTTP transport for P4 writer-election Raft messages (slice 3b): an axum endpoint that feeds a POSTed encoded message to a node's elector and returns its encoded outbound messages, plus a ureq client that POSTs to a peer. Moves bytes only via the elector's encoded API — no raft/prost dep. The consensus itself is proven in the elector crate; this carries its messages over real sockets."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_writer_elector_http_chirho"
+path = "src/lib.rs"
+
+[build-dependencies]
+# Build-script half only (see the crate's own note on why the two halves are separated).
+cairn-build-identity-chirho = { path = "../../support-chirho/cairn-build-identity-chirho", features = [
+    "build-script-chirho",
+] }
+
+[dependencies]
+# The reference binary's `--version` surface: a staged binary must be able to name its own tree.
+cairn-build-identity-chirho = { path = "../../support-chirho/cairn-build-identity-chirho" }
+cairn-writer-elector-chirho = { path = "../../support-chirho/cairn-writer-elector-chirho" }
+# The deployable ClusterNodeChirho config names the ConsistencyGroupIdChirho type from writer-head.
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }
+# Authority-bearing cluster configs are hashed only after an identity-stable bounded read.
+cairn-durable-chirho = { path = "../../support-chirho/cairn-durable-chirho" }
+# The reference binary's `keygen` subcommand provisions each node's signing identity + reads its pubkey.
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+# A1.5 membership-control surface: the fail-closed verified-roster derivation (roster-config) and the
+# election-only convergence + re-home drivers the /converge + /re-home control endpoints run.
+cairn-roster-config-chirho = { path = "../cairn-roster-config-chirho" }
+cairn-roster-convergence-chirho = { path = "../cairn-roster-convergence-chirho" }
+cairn-tenant-placement-authority-chirho = { path = "../cairn-tenant-placement-authority-chirho" }
+axum = "0.7"
+tokio = { version = "1", features = ["rt-multi-thread", "net", "sync", "time"] }
+ureq = "2"
+url = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1.0.102"
+blake3 = "1"
+# For the reference cluster-node binary only: SIGTERM/SIGINT -> graceful drain.
+ctrlc = { version = "3.4", features = ["termination"] }
+
+[dev-dependencies]
+# Test-only: build signed membership-roster fixtures (records + network coords + head) to exercise the
+# /converge-chirho VERIFIED-roster path end-to-end through the HTTP endpoint.
+cairn-replication-chirho = { path = "../../services-chirho/cairn-replication-chirho" }
+tempfile = "3"

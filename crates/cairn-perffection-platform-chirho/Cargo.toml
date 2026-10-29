@@ -1,0 +1,16 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-perffection-platform-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Perffection platform-facing tool catalogs and platform control-plane surfaces built on cairn-chirho."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_perffection_platform_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1"

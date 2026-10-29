@@ -1,0 +1,46 @@
+<!-- For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16 -->
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cairn-chirho contact</title>
+<script type="module" src="/htmx-lite-chirho.js"></script>
+<main>
+  <h1>Contact</h1>
+  <form
+    hx-post="/app-chirho/contact"
+    hx-target="#contact-result-chirho"
+    hx-swap="innerHTML"
+    hx-on::after-request="document.body.dispatchEvent(new Event('contactListRefreshChirho'))">
+    <label>
+      Name
+      <input name="name_chirho" autocomplete="name" required>
+    </label>
+    <label>
+      Email
+      <input name="email_chirho" type="email" autocomplete="email" required>
+    </label>
+    <label>
+      Message
+      <textarea name="message_chirho" required></textarea>
+    </label>
+    <button type="submit">Send</button>
+  </form>
+  <div id="contact-result-chirho" aria-live="polite"></div>
+  <section>
+    <h2>Submissions</h2>
+    <div
+      id="contact-list-chirho"
+      hx-post="/app-chirho/contact/contact-list"
+      hx-trigger="load, contactListRefreshChirho from:body"
+      hx-target="this"
+      hx-swap="innerHTML"
+      aria-live="polite"></div>
+    <button
+      type="button"
+      hx-post="/app-chirho/contact/contact-list"
+      hx-target="#contact-list-chirho"
+      hx-swap="innerHTML">Refresh</button>
+  </section>
+</main>
+</html>

@@ -1,0 +1,12 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "Receive a contact message, tidy it up, and thank the sender warmly."
+surface_chirho = { ins_chirho = ["request: form_post_v1"], outs_chirho = ["response: html_partial_v1"] }
+structure_chirho = [
+  "request must pass through validate_message before anything renders",
+  "no effect doors in this dag (pure demo v0)",
+]
+behaviors_chirho = [
+  "an empty name is refused with: please tell us your name",
+  "the response thanks the sender by their tidied name",
+]

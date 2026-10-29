@@ -1,0 +1,28 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+
+schema_chirho = "rendered-copy-lint-policy-v1-chirho"
+public_route_kinds_chirho = ["landing-chirho"]
+technical_route_kinds_chirho = ["technical_chirho"]
+unlinted_route_kinds_chirho = ["unlinted_chirho"]
+snippet_radius_chirho = 24
+max_findings_chirho = 5
+
+[[blocked_terms_chirho]]
+term_chirho = "manifest"
+category_chirho = "implementation-detail-chirho"
+hint_chirho = "Do not show 'manifest' to visitors."
+
+[[blocked_terms_chirho]]
+term_chirho = "proof"
+category_chirho = "implementation-detail-chirho"
+hint_chirho = "Do not show 'proof' to visitors."
+
+[[blocked_terms_chirho]]
+term_chirho = "Cairn"
+category_chirho = "implementation-detail-chirho"
+hint_chirho = "Public generated sites should show the business, not the platform."
+
+[[blocked_terms_chirho]]
+term_chirho = "DAG"
+category_chirho = "implementation-detail-chirho"
+hint_chirho = "Keep platform architecture out of public visitor copy."

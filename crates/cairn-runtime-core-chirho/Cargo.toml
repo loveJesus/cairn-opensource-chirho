@@ -1,0 +1,21 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-runtime-core-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Portable cairn executor over the storage + runner ports — wasm-safe, no concrete fs/redb/wasmtime. M35.3: the minimal linear pure-node DAG slice."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_runtime_core_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+cairn-core-chirho = { path = "../cairn-core-chirho" }
+anyhow = "1.0.102"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+cairn-store-memory-chirho = { path = "../stores-chirho/cairn-store-memory-chirho" }
+cairn-store-fs-chirho = { path = "../stores-chirho/cairn-store-fs-chirho" }
+cairn-store-redb-chirho = { path = "../stores-chirho/cairn-store-redb-chirho" }

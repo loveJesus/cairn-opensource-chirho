@@ -1,0 +1,134 @@
+{
+  "schema_chirho": "app-source-manifest-v1-chirho",
+  "app_chirho": "tree-pizzeria-orders",
+  "owner_chirho": "owner/replace-with-local-owner-principal",
+  "nodes_chirho": [
+    {
+      "id_chirho": "validate_order",
+      "name_chirho": "validate_order_chirho",
+      "entry_chirho": "validate_order_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "tree-pizzeria-chirho",
+        "example_chirho": "validate_order_guest_chirho",
+        "features_chirho": [],
+        "manifest_path_chirho": "Cargo.toml",
+        "artifact_path_chirho": "target/wasm32-unknown-unknown/debug/examples/validate_order_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "save_order",
+      "name_chirho": "save_order_chirho",
+      "entry_chirho": "node_chirho",
+      "fuel_chirho": 0,
+      "capabilities_chirho": ["write-store:orders-chirho"],
+      "source_chirho": { "kind_chirho": "builtin-node-template-chirho", "template_chirho": "node-template-chirho" }
+    },
+    {
+      "id_chirho": "render_confirmation",
+      "name_chirho": "render_confirmation_chirho",
+      "entry_chirho": "render_confirmation_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "tree-pizzeria-chirho",
+        "example_chirho": "render_confirmation_guest_chirho",
+        "features_chirho": [],
+        "manifest_path_chirho": "Cargo.toml",
+        "artifact_path_chirho": "target/wasm32-unknown-unknown/debug/examples/render_confirmation_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "order_list_request",
+      "name_chirho": "order_list_request_chirho",
+      "entry_chirho": "order_list_request_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "tree-pizzeria-chirho",
+        "example_chirho": "order_list_request_guest_chirho",
+        "features_chirho": [],
+        "manifest_path_chirho": "Cargo.toml",
+        "artifact_path_chirho": "target/wasm32-unknown-unknown/debug/examples/order_list_request_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "query_orders",
+      "name_chirho": "query_orders_chirho",
+      "entry_chirho": "node_chirho",
+      "fuel_chirho": 0,
+      "capabilities_chirho": [
+        "query:orders-chirho:order-query-caller:50",
+        "identity:order-query-caller:source-manifest-client-chirho:source-manifest-token-chirho"
+      ],
+      "source_chirho": { "kind_chirho": "builtin-node-template-chirho", "template_chirho": "node-template-chirho" }
+    },
+    {
+      "id_chirho": "render_order_list",
+      "name_chirho": "render_order_list_chirho",
+      "entry_chirho": "render_order_list_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "tree-pizzeria-chirho",
+        "example_chirho": "render_order_list_guest_chirho",
+        "features_chirho": [],
+        "manifest_path_chirho": "Cargo.toml",
+        "artifact_path_chirho": "target/wasm32-unknown-unknown/debug/examples/render_order_list_guest_chirho.wasm"
+      }
+    }
+  ],
+  "dags_chirho": [
+    {
+      "id_chirho": "place_order_dag",
+      "nodes_chirho": ["validate_order", "save_order", "render_confirmation"],
+      "edges_chirho": [
+        { "from_node_chirho": "validate_order", "from_port_chirho": "out", "to_node_chirho": "save_order", "to_port_chirho": "in" },
+        { "from_node_chirho": "save_order", "from_port_chirho": "out", "to_node_chirho": "render_confirmation", "to_port_chirho": "in" }
+      ]
+    },
+    {
+      "id_chirho": "order_list_dag",
+      "nodes_chirho": ["order_list_request", "query_orders", "render_order_list"],
+      "edges_chirho": [
+        { "from_node_chirho": "order_list_request", "from_port_chirho": "out", "to_node_chirho": "query_orders", "to_port_chirho": "in" },
+        { "from_node_chirho": "query_orders", "from_port_chirho": "out", "to_node_chirho": "render_order_list", "to_port_chirho": "in" }
+      ]
+    }
+  ],
+  "modules_chirho": [
+    {
+      "id_chirho": "place_order_module",
+      "dag_chirho": "place_order_dag",
+      "name_chirho": "place_order_chirho",
+      "version_chirho": "v1",
+      "input_bindings_chirho": [{ "public_name_chirho": "request_chirho", "node_chirho": "validate_order", "node_port_chirho": "in" }],
+      "output_bindings_chirho": [{ "public_name_chirho": "response_chirho", "node_chirho": "render_confirmation", "node_port_chirho": "out" }],
+      "route_labels_chirho": ["place-order-chirho"]
+    },
+    {
+      "id_chirho": "order_list_module",
+      "dag_chirho": "order_list_dag",
+      "name_chirho": "order_list_chirho",
+      "version_chirho": "v1",
+      "input_bindings_chirho": [{ "public_name_chirho": "request_chirho", "node_chirho": "order_list_request", "node_port_chirho": "in" }],
+      "output_bindings_chirho": [{ "public_name_chirho": "response_chirho", "node_chirho": "render_order_list", "node_port_chirho": "out" }],
+      "route_labels_chirho": ["order-list-chirho"]
+    }
+  ],
+  "deploy_chirho": {
+    "root_chirho": { "kind_chirho": "module-id-chirho", "id_chirho": "place_order_module" },
+    "input_mode_chirho": { "kind_chirho": "plain-chirho" },
+    "response_content_type_chirho": "text/html",
+    "routes_chirho": [
+      {
+        "route_chirho": "order-list-chirho",
+        "source_chirho": { "kind_chirho": "module-id-chirho", "id_chirho": "order_list_module" },
+        "input_mode_chirho": { "kind_chirho": "plain-chirho" },
+        "response_content_type_chirho": "text/html"
+      }
+    ],
+    "target_chirho": { "kind_chirho": "local-deploy-chirho" }
+  }
+}

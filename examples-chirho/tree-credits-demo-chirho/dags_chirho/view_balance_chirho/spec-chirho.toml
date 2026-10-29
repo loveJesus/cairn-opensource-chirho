@@ -1,0 +1,13 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "Read the verified account-net projection and render its typed verdict verbatim."
+surface_chirho = { ins_chirho = ["request: http_request_v1"], outs_chirho = ["page: html_partial_v1"] }
+structure_chirho = [
+  "the pure builder fixes the projection coordinate and bounded limit before the blessed Query door",
+  "the injected published-projection composition owns storage, descriptor, cost-class, and freshness authority",
+  "the renderer consumes Fresh, Degraded, ClassifierRefused, or GateRefused without deriving lag or authority",
+]
+behaviors_chirho = [
+  "Fresh and Degraded render the verified account-net row plus the transport verdict",
+  "ClassifierRefused and GateRefused render bounded refusal partials without view data",
+]

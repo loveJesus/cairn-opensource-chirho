@@ -1,0 +1,13 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "Take a dine-in order, persist it durably through a blessed door, and confirm it."
+surface_chirho = { ins_chirho = ["request: order_form_v1"], outs_chirho = ["response: html_partial_v1"] }
+structure_chirho = [
+  "validate_order must pass through the blessed save_order door before anything is confirmed",
+  "save_order is the only effect door; it holds the write-store:orders-chirho capability",
+]
+behaviors_chirho = [
+  "accepts a table number and item lines, persists the order under the orders namespace, confirms it",
+  "kindly rejects an empty or malformed order",
+  "identical re-submissions are idempotent (content-keyed)",
+]

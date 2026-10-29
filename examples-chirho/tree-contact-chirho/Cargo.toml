@@ -1,0 +1,29 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "tree-contact-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Demo app: directory-structure-IS-DAG contact app (T2 — built first, tooling follows what works)."
+license = "MIT"
+
+# Standalone: not a member of the engine workspace.
+[workspace]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+cairn-node-sdk-chirho = { path = "../../crates/cairn-node-sdk-chirho", features = ["json-chirho"] }
+cairn-node-templating-chirho = { path = "../../crates/authoring-chirho/cairn-node-templating-chirho" }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[example]]
+name = "validate_message_guest_chirho"
+path = "examples/validate_message_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "render_thanks_guest_chirho"
+path = "examples/render_thanks_guest_chirho.rs"
+crate-type = ["cdylib"]

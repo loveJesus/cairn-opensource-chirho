@@ -1,0 +1,16 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+#
+# App-level descriptor: the things that live ABOVE the dag (per the "surface is not routes"
+# doctrine) — the app name, owner, the package the wasm guests build from, and the protocol
+# binding from a dag surface to a public route. tree-build combines this with the dag tree to
+# emit the app-source manifest.
+schema_chirho = "app-descriptor-v0-chirho"
+app_chirho = "tree-contact"
+owner_chirho = "owner/replace-with-local-owner-principal"
+package_chirho = "tree-contact-chirho"
+
+# The root dag served at the app root, plus its input mode and route label.
+[root_chirho]
+dag_chirho = "receive_message_chirho"
+input_mode_chirho = "plain"
+route_label_chirho = "contact-chirho"

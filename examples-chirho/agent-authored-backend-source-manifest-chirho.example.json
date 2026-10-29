@@ -1,0 +1,63 @@
+{
+  "schema_chirho": "app-source-manifest-v1-chirho",
+  "app_chirho": "agent-demo",
+  "owner_chirho": "owner/replace-with-local-owner-principal",
+  "nodes_chirho": [
+    {
+      "id_chirho": "agent_backend_transform",
+      "name_chirho": "agent_backend_transform_chirho",
+      "entry_chirho": "upcase_chirho",
+      "fuel_chirho": 1000000,
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "upcase-chirho.wat"
+      }
+    }
+  ],
+  "dags_chirho": [
+    {
+      "id_chirho": "agent_backend_dag",
+      "nodes_chirho": ["agent_backend_transform"]
+    }
+  ],
+  "modules_chirho": [
+    {
+      "id_chirho": "agent_backend_module",
+      "dag_chirho": "agent_backend_dag",
+      "name_chirho": "agent_backend_chirho",
+      "version_chirho": "v1",
+      "input_bindings_chirho": [
+        {
+          "public_name_chirho": "request_chirho",
+          "node_chirho": "agent_backend_transform",
+          "node_port_chirho": "in"
+        }
+      ],
+      "output_bindings_chirho": [
+        {
+          "public_name_chirho": "response_chirho",
+          "node_chirho": "agent_backend_transform",
+          "node_port_chirho": "out"
+        }
+      ],
+      "route_labels_chirho": ["agent-backend-chirho"],
+      "metadata_chirho": {
+        "brief_chirho": "agent-authored-backend-brief-chirho.md",
+        "generation_chirho": "checked-in-agent-authored-demo-chirho",
+        "producer_chirho": "agent/codex-demo-chirho"
+      }
+    }
+  ],
+  "deploy_chirho": {
+    "root_chirho": {
+      "kind_chirho": "module-id-chirho",
+      "id_chirho": "agent_backend_module"
+    },
+    "input_mode_chirho": {
+      "kind_chirho": "plain-chirho"
+    },
+    "target_chirho": {
+      "kind_chirho": "local-deploy-chirho"
+    }
+  }
+}

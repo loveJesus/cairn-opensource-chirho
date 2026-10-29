@@ -1,0 +1,91 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-node-sdk-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Dep-light guest SDK for cairn-chirho bytes-ABI WASM nodes."
+license = "MIT"
+
+[lib]
+name = "cairn_node_sdk_chirho"
+path = "src/lib.rs"
+
+[[example]]
+name = "upcase_guest_chirho"
+path = "examples/upcase_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "typed_greet_guest_chirho"
+path = "examples/typed_greet_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "attested_json_guest_chirho"
+path = "examples/attested_json_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "contact_form_guest_chirho"
+path = "examples/contact_form_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "contact_record_guest_chirho"
+path = "examples/contact_record_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "contact_render_guest_chirho"
+path = "examples/contact_render_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "contact_list_guest_chirho"
+path = "examples/contact_list_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "contact_list_request_guest_chirho"
+path = "examples/contact_list_request_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "perffection_intake_record_guest_chirho"
+path = "examples/perffection_intake_record_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "perffection_intake_render_guest_chirho"
+path = "examples/perffection_intake_render_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "perffection_intake_list_guest_chirho"
+path = "examples/perffection_intake_list_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[[example]]
+name = "perffection_intake_list_request_guest_chirho"
+path = "examples/perffection_intake_list_request_guest_chirho.rs"
+crate-type = ["cdylib"]
+required-features = ["json-chirho"]
+
+[features]
+default = []
+json-chirho = ["dep:base64", "dep:serde", "dep:serde_json"]
+
+[dependencies]
+base64 = { version = "0.22", optional = true }
+serde = { version = "1", features = ["derive"], optional = true }
+serde_json = { version = "1", optional = true }

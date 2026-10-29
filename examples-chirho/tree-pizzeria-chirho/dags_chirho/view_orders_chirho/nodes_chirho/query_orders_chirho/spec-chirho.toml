@@ -1,0 +1,7 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Blessed query door: read the persisted orders back as a metered query."
+behaviors_chirho = [
+  "runs query:orders-chirho as the funded source-manifest caller, returning up to 50 rows",
+  "metered: the caller pays gas per query",
+]

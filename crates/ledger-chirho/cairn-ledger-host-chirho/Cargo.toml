@@ -1,0 +1,51 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+license = "AGPL-3.0-only"
+name = "cairn-ledger-host-chirho"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+blake3 = "1"
+cairn-config-chirho = { path = "../../support-chirho/cairn-config-chirho" }
+cairn-durable-chirho = { path = "../../support-chirho/cairn-durable-chirho" }
+cairn-effect-commit-chirho = { path = "../../runtime-chirho/cairn-effect-commit-chirho" }
+cairn-effect-commit-ledger-chirho = { path = "../cairn-effect-commit-ledger-chirho" }
+cairn-kind-registry-chirho = { path = "../cairn-kind-registry-chirho" }
+# CF4 conservation checker. A pure LEAF (its only dependency is cairn-ledger-model-chirho, which this
+# crate already has), so this adds no transitive reach. The converger must MEASURE conservation, and
+# one checker is safer than a host-side mirror of its seven laws. Deliberately NOT money-audit: the
+# journal walk and record-grammar derivation stay above, in cairn-ledger-composition-chirho.
+cairn-ledger-conservation-monitor-chirho = { path = "../cairn-ledger-conservation-monitor-chirho" }
+cairn-ledger-host-storage-chirho = { path = "../host-chirho/cairn-ledger-host-storage-chirho" }
+cairn-ledger-elected-head-transition-chirho = { path = "../host-chirho/cairn-ledger-elected-head-transition-chirho" }
+cairn-ledger-authority-chirho = { path = "../host-chirho/cairn-ledger-authority-chirho" }
+cairn-ledger-log-chirho = { path = "../cairn-ledger-log-chirho" }
+cairn-ledger-model-chirho = { path = "../cairn-ledger-model-chirho" }
+cairn-ledger-read-model-chirho = { path = "../cairn-ledger-read-model-chirho" }
+cairn-ledger-tenant-migration-chirho = { path = "../host-chirho/cairn-ledger-tenant-migration-chirho" }
+cairn-ledger-tenant-migration-durable-chirho = { path = "../host-chirho/cairn-ledger-tenant-migration-durable-chirho" }
+cairn-secret-chirho = { path = "../../support-chirho/cairn-secret-chirho" }
+cairn-seqlog-chirho = { path = "../../support-chirho/cairn-seqlog-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-tenant-chirho = { path = "../../support-chirho/cairn-tenant-chirho" }
+cairn-writer-elector-chirho = { path = "../../support-chirho/cairn-writer-elector-chirho" }
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }
+ed25519-dalek = { version = "2", features = ["zeroize"] }
+libc = "0.2"
+rand_core = { version = "0.6", features = ["getrandom"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+rustix = { version = "=1.1.4", features = ["fs", "process"] }
+zeroize = "1"
+
+[dev-dependencies]
+cairn-ledger-authority-chirho = { path = "../host-chirho/cairn-ledger-authority-chirho", features = ["test-hooks-chirho"] }
+cairn-ledger-tenant-migration-durable-chirho = { path = "../host-chirho/cairn-ledger-tenant-migration-durable-chirho", features = ["test-hooks-chirho"] }
+# DEV-ONLY BY DESIGN: resolver v2 keeps a dev-dependency feature out of normal builds, so the
+# storage crate ships without its test-support items. The placement IS the property; a guard pins
+# that this feature never appears in a [dependencies] section anywhere in the workspace.
+cairn-ledger-host-storage-chirho = { path = "../host-chirho/cairn-ledger-host-storage-chirho", features = ["test-hooks-chirho"] }
+cairn-ledger-sim-chirho = { path = "../cairn-ledger-sim-chirho" }

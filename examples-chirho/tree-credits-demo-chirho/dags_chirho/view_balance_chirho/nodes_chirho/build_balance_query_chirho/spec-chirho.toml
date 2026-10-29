@@ -1,0 +1,7 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Build the one fixed, bounded credits-balance projection query."
+behaviors_chirho = [
+  "reads request (http_request_v1) only as the route trigger",
+  "writes query (scoped_query_v1) with no caller-selected path or limit",
+]

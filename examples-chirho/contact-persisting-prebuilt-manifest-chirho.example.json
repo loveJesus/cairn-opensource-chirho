@@ -1,0 +1,193 @@
+{
+  "schema_chirho": "app-source-manifest-v1-chirho",
+  "app_chirho": "contact",
+  "owner_chirho": "owner/replace-with-local-owner-principal",
+  "nodes_chirho": [
+    {
+      "id_chirho": "contact_record",
+      "name_chirho": "contact_record_chirho",
+      "entry_chirho": "contact_record_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "target/wasm32-unknown-unknown/debug/examples/contact_record_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "store_contact",
+      "name_chirho": "store_contact_chirho",
+      "entry_chirho": "node_chirho",
+      "fuel_chirho": 0,
+      "capabilities_chirho": [
+        "write-store:contacts-chirho"
+      ],
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "node-template-chirho.wat"
+      }
+    },
+    {
+      "id_chirho": "contact_render",
+      "name_chirho": "contact_render_chirho",
+      "entry_chirho": "contact_render_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "target/wasm32-unknown-unknown/debug/examples/contact_render_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "contact_list_request",
+      "name_chirho": "contact_list_request_chirho",
+      "entry_chirho": "contact_list_request_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "target/wasm32-unknown-unknown/debug/examples/contact_list_request_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "query_contacts",
+      "name_chirho": "query_contacts_chirho",
+      "entry_chirho": "node_chirho",
+      "fuel_chirho": 0,
+      "capabilities_chirho": [
+        "query:contacts-chirho:contact-query-caller:50",
+        "identity:contact-query-caller:source-manifest-client-chirho:source-manifest-token-chirho"
+      ],
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "node-template-chirho.wat"
+      }
+    },
+    {
+      "id_chirho": "contact_list_render",
+      "name_chirho": "contact_list_render_chirho",
+      "entry_chirho": "contact_list_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "target/wasm32-unknown-unknown/debug/examples/contact_list_guest_chirho.wasm"
+      }
+    }
+  ],
+  "dags_chirho": [
+    {
+      "id_chirho": "contact_dag",
+      "nodes_chirho": [
+        "contact_record",
+        "store_contact",
+        "contact_render"
+      ],
+      "edges_chirho": [
+        {
+          "from_node_chirho": "contact_record",
+          "from_port_chirho": "out",
+          "to_node_chirho": "store_contact",
+          "to_port_chirho": "in"
+        },
+        {
+          "from_node_chirho": "store_contact",
+          "from_port_chirho": "out",
+          "to_node_chirho": "contact_render",
+          "to_port_chirho": "in"
+        }
+      ]
+    },
+    {
+      "id_chirho": "contact_list_dag",
+      "nodes_chirho": [
+        "contact_list_request",
+        "query_contacts",
+        "contact_list_render"
+      ],
+      "edges_chirho": [
+        {
+          "from_node_chirho": "contact_list_request",
+          "from_port_chirho": "out",
+          "to_node_chirho": "query_contacts",
+          "to_port_chirho": "in"
+        },
+        {
+          "from_node_chirho": "query_contacts",
+          "from_port_chirho": "out",
+          "to_node_chirho": "contact_list_render",
+          "to_port_chirho": "in"
+        }
+      ]
+    }
+  ],
+  "modules_chirho": [
+    {
+      "id_chirho": "contact_module",
+      "dag_chirho": "contact_dag",
+      "name_chirho": "contact_chirho",
+      "version_chirho": "v1",
+      "input_bindings_chirho": [
+        {
+          "public_name_chirho": "request_chirho",
+          "node_chirho": "contact_record",
+          "node_port_chirho": "in"
+        }
+      ],
+      "output_bindings_chirho": [
+        {
+          "public_name_chirho": "response_chirho",
+          "node_chirho": "contact_render",
+          "node_port_chirho": "out"
+        }
+      ],
+      "route_labels_chirho": [
+        "contact-chirho"
+      ]
+    },
+    {
+      "id_chirho": "contact_list_module",
+      "dag_chirho": "contact_list_dag",
+      "name_chirho": "contact_list_chirho",
+      "version_chirho": "v1",
+      "input_bindings_chirho": [
+        {
+          "public_name_chirho": "request_chirho",
+          "node_chirho": "contact_list_request",
+          "node_port_chirho": "in"
+        }
+      ],
+      "output_bindings_chirho": [
+        {
+          "public_name_chirho": "response_chirho",
+          "node_chirho": "contact_list_render",
+          "node_port_chirho": "out"
+        }
+      ],
+      "route_labels_chirho": [
+        "contact-list-chirho"
+      ]
+    }
+  ],
+  "deploy_chirho": {
+    "root_chirho": {
+      "kind_chirho": "module-id-chirho",
+      "id_chirho": "contact_module"
+    },
+    "input_mode_chirho": {
+      "kind_chirho": "private-blob-ref-chirho",
+      "subject_chirho": "app/contact/inbox"
+    },
+    "routes_chirho": [
+      {
+        "route_chirho": "contact-list",
+        "source_chirho": {
+          "kind_chirho": "module-id-chirho",
+          "id_chirho": "contact_list_module"
+        },
+        "input_mode_chirho": {
+          "kind_chirho": "plain-chirho"
+        }
+      }
+    ],
+    "target_chirho": {
+      "kind_chirho": "local-deploy-chirho"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# App-level descriptor for the AI app-builder example — the most intricate cairn app: an EFFECTFUL
+# dag (5 nodes; 3 pure transforms wrapping 2 blessed effect doors) that turns a business description
+# into a deployed landing app. tree-build combines this with the dag tree to emit the app-source
+# manifest. The model produces only the params DATA; the LLM door and the template-deploy door are
+# the small, signed, blessed set of things that touch the world.
+schema_chirho = "app-descriptor-v0-chirho"
+app_chirho = "tree-app-builder"
+owner_chirho = "owner/replace-with-local-owner-principal"
+package_chirho = "tree-app-builder-chirho"
+
+# The app root: the JS-free "describe your app" form. GET it, type a business description, submit.
+[root_chirho]
+dag_chirho = "view_form_chirho"
+input_mode_chirho = "plain"
+route_label_chirho = "form-chirho"
+
+# The build route the form POSTs to: turn the submitted description into a deployed landing app.
+[[route_chirho]]
+dag_chirho = "view_build_chirho"
+input_mode_chirho = "private-blob-ref"
+subject_chirho = "request-user-chirho"
+route_chirho = "build-chirho"

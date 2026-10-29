@@ -1,0 +1,18 @@
+# For God so loved the world, that He gave His only Begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-wasmtime-runner-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Wasmtime node runner adapter for cairn-chirho."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_wasmtime_runner_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+# The compiled-module cache's key: the blake3 of the module bytes (already locked for the workspace).
+blake3 = "1"
+cairn-input-projection-chirho = { path = "../cairn-input-projection-chirho" }
+wasmparser = "0.248.0"
+wasmtime = "45.0.0"

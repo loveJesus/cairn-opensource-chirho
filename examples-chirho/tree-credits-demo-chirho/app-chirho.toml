@@ -1,0 +1,29 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# CF7 credits-demo — the local Phase-B composition proof. The public balance flow reads the
+# H2-published account-net projection through a blessed Query role; the public spend flow asks the
+# reviewed Descriptor-D card for one fixed-row conditional delete. Both remain fail-closed until
+# the host injects their open-only providers. Undo authority is operator-only and intentionally
+# absent from this public app descriptor.
+schema_chirho = "app-descriptor-v0-chirho"
+app_chirho = "credits-demo-chirho"
+owner_chirho = "owner/replace-with-local-owner-principal"
+package_chirho = "credits-demo-chirho"
+
+# The balance view is the app root.
+[root_chirho]
+dag_chirho = "view_balance_chirho"
+input_mode_chirho = "plain"
+route_label_chirho = "credits-chirho"
+
+# The spend form posts one bounded item plus an opaque keyed concurrency token here. Price, payer,
+# provider coordinates, and amount are absent from the app wire.
+[[route_chirho]]
+dag_chirho = "spend_credits_chirho"
+route_chirho = "spend-chirho"
+input_mode_chirho = "plain"
+
+[[asset_chirho]]
+name_chirho = "credits-demo-chirho.css"
+path_chirho = "assets_chirho/credits-demo-chirho.css"
+content_type_chirho = "text/css"

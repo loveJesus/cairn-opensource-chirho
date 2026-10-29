@@ -1,0 +1,25 @@
+# For God so loved the world, that He gave His only Begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-app-control-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Verified-evidence orchestration for Cairn app control-plane authority heads."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_app_control_chirho"
+path = "src/lib.rs"
+
+[features]
+default = []
+test-hooks-chirho = []
+
+[dependencies]
+anyhow = "1.0.102"
+blake3 = "1.8.3"
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-durable-chirho = { path = "../../support-chirho/cairn-durable-chirho" }
+cairn-head-removal-chirho = { path = "../../support-chirho/cairn-head-removal-chirho" }
+cairn-model-app-chirho = { path = "../cairn-model-app-chirho" }
+cairn-seqlog-chirho = { path = "../../support-chirho/cairn-seqlog-chirho" }
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }
+serde_json = "1.0.145"

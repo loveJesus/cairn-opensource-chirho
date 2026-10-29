@@ -1,0 +1,203 @@
+{
+  "schema_chirho": "app-source-manifest-v1-chirho",
+  "app_chirho": "perffection",
+  "owner_chirho": "owner/replace-with-local-owner-principal",
+  "nodes_chirho": [
+    {
+      "id_chirho": "perffection_intake_record",
+      "name_chirho": "perffection_intake_record_chirho",
+      "entry_chirho": "perffection_intake_record_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "cairn-node-sdk-chirho",
+        "example_chirho": "perffection_intake_record_guest_chirho",
+        "features_chirho": ["json-chirho"],
+        "manifest_path_chirho": "../Cargo.toml",
+        "artifact_path_chirho": "../target/wasm32-unknown-unknown/debug/examples/perffection_intake_record_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "store_perffection_intake",
+      "name_chirho": "store_perffection_intake_chirho",
+      "entry_chirho": "node_chirho",
+      "fuel_chirho": 0,
+      "capabilities_chirho": ["write-store:perffection-intake-chirho"],
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "node-template-chirho.wat"
+      }
+    },
+    {
+      "id_chirho": "perffection_intake_render",
+      "name_chirho": "perffection_intake_render_chirho",
+      "entry_chirho": "perffection_intake_render_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "cairn-node-sdk-chirho",
+        "example_chirho": "perffection_intake_render_guest_chirho",
+        "features_chirho": ["json-chirho"],
+        "manifest_path_chirho": "../Cargo.toml",
+        "artifact_path_chirho": "../target/wasm32-unknown-unknown/debug/examples/perffection_intake_render_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "perffection_intake_list_request",
+      "name_chirho": "perffection_intake_list_request_chirho",
+      "entry_chirho": "perffection_intake_list_request_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "cairn-node-sdk-chirho",
+        "example_chirho": "perffection_intake_list_request_guest_chirho",
+        "features_chirho": ["json-chirho"],
+        "manifest_path_chirho": "../Cargo.toml",
+        "artifact_path_chirho": "../target/wasm32-unknown-unknown/debug/examples/perffection_intake_list_request_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "query_perffection_intake",
+      "name_chirho": "query_perffection_intake_chirho",
+      "entry_chirho": "node_chirho",
+      "fuel_chirho": 0,
+      "capabilities_chirho": [
+        "query:perffection-intake-chirho:perffection-intake-query-caller:50",
+        "identity:perffection-intake-query-caller:source-manifest-client-chirho:source-manifest-token-chirho"
+      ],
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "node-template-chirho.wat"
+      }
+    },
+    {
+      "id_chirho": "perffection_intake_list_render",
+      "name_chirho": "perffection_intake_list_render_chirho",
+      "entry_chirho": "perffection_intake_list_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "cairn-node-sdk-chirho",
+        "example_chirho": "perffection_intake_list_guest_chirho",
+        "features_chirho": ["json-chirho"],
+        "manifest_path_chirho": "../Cargo.toml",
+        "artifact_path_chirho": "../target/wasm32-unknown-unknown/debug/examples/perffection_intake_list_guest_chirho.wasm"
+      }
+    }
+  ],
+  "dags_chirho": [
+    {
+      "id_chirho": "perffection_intake_dag",
+      "nodes_chirho": [
+        "perffection_intake_record",
+        "store_perffection_intake",
+        "perffection_intake_render"
+      ],
+      "edges_chirho": [
+        {
+          "from_node_chirho": "perffection_intake_record",
+          "from_port_chirho": "out",
+          "to_node_chirho": "store_perffection_intake",
+          "to_port_chirho": "in"
+        },
+        {
+          "from_node_chirho": "store_perffection_intake",
+          "from_port_chirho": "out",
+          "to_node_chirho": "perffection_intake_render",
+          "to_port_chirho": "in"
+        }
+      ]
+    },
+    {
+      "id_chirho": "perffection_intake_list_dag",
+      "nodes_chirho": [
+        "perffection_intake_list_request",
+        "query_perffection_intake",
+        "perffection_intake_list_render"
+      ],
+      "edges_chirho": [
+        {
+          "from_node_chirho": "perffection_intake_list_request",
+          "from_port_chirho": "out",
+          "to_node_chirho": "query_perffection_intake",
+          "to_port_chirho": "in"
+        },
+        {
+          "from_node_chirho": "query_perffection_intake",
+          "from_port_chirho": "out",
+          "to_node_chirho": "perffection_intake_list_render",
+          "to_port_chirho": "in"
+        }
+      ]
+    }
+  ],
+  "modules_chirho": [
+    {
+      "id_chirho": "perffection_intake_module",
+      "dag_chirho": "perffection_intake_dag",
+      "name_chirho": "perffection_intake_chirho",
+      "version_chirho": "v1",
+      "input_bindings_chirho": [
+        {
+          "public_name_chirho": "request_chirho",
+          "node_chirho": "perffection_intake_record",
+          "node_port_chirho": "in"
+        }
+      ],
+      "output_bindings_chirho": [
+        {
+          "public_name_chirho": "response_chirho",
+          "node_chirho": "perffection_intake_render",
+          "node_port_chirho": "out"
+        }
+      ],
+      "route_labels_chirho": ["perffection-intake-chirho"]
+    },
+    {
+      "id_chirho": "perffection_intake_list_module",
+      "dag_chirho": "perffection_intake_list_dag",
+      "name_chirho": "perffection_intake_list_chirho",
+      "version_chirho": "v1",
+      "input_bindings_chirho": [
+        {
+          "public_name_chirho": "request_chirho",
+          "node_chirho": "perffection_intake_list_request",
+          "node_port_chirho": "in"
+        }
+      ],
+      "output_bindings_chirho": [
+        {
+          "public_name_chirho": "response_chirho",
+          "node_chirho": "perffection_intake_list_render",
+          "node_port_chirho": "out"
+        }
+      ],
+      "route_labels_chirho": ["perffection-intake-list-chirho"]
+    }
+  ],
+  "deploy_chirho": {
+    "root_chirho": {
+      "kind_chirho": "module-id-chirho",
+      "id_chirho": "perffection_intake_module"
+    },
+    "input_mode_chirho": {
+      "kind_chirho": "private-blob-ref-chirho",
+      "subject_chirho": "app/perffection/intake"
+    },
+    "routes_chirho": [
+      {
+        "route_chirho": "intake-list",
+        "source_chirho": {
+          "kind_chirho": "module-id-chirho",
+          "id_chirho": "perffection_intake_list_module"
+        },
+        "input_mode_chirho": {
+          "kind_chirho": "plain-chirho"
+        }
+      }
+    ],
+    "target_chirho": {
+      "kind_chirho": "local-deploy-chirho"
+    }
+  }
+}

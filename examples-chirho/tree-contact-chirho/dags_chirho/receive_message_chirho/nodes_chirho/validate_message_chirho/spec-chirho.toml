@@ -1,0 +1,11 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Take the raw form post, trim it, refuse empty or oversized messages kindly."
+behaviors_chirho = [
+  "trims whitespace from name and body",
+  "rejects an empty name with: please tell us your name",
+  "rejects a body longer than max_length characters",
+]
+[[example_chirho]]
+in_chirho = { raw_form = { name_chirho = " Rosa ", body_chirho = "ciao!" }, max_length = 2000 }
+expect_chirho = { clean_message = { name_chirho = "Rosa", body_chirho = "ciao!" } }

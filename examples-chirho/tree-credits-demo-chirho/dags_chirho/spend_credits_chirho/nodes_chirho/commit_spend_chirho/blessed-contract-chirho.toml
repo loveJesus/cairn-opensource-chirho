@@ -1,0 +1,7 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "blessed-card-v2-chirho"
+contract_chirho = "postgres-reversible"
+contract_hash_chirho = "cbc5fa7bf6c7ee7b6399d8673d3f3e5e60e27dd54851c7dc998b47a0687790c2"
+scope_chirho = "credits-spend-chirho"
+caller_chirho = "credits-demo-spend-role-chirho"
+intent_chirho = "Apply the one reviewed credits-demo conditional delete through Descriptor-D."

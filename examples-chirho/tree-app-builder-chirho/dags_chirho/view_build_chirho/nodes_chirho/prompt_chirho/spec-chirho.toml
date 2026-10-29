@@ -1,0 +1,9 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Pure: build the bounded LLM request (instruction + business description, plus the hard budget) from the http request, failing closed on a blank/missing description before the LLM door fires."
+behaviors_chirho = [
+  "reads request (http_request_v1) and appends the user's business description to the fixed content-generator instruction",
+  "pins the hard budget the llm door enforces: max 800 tokens and max price 5 per token",
+  "fails closed on a missing/blank/whitespace-only description: it emits no valid LLM request (the error envelope carries no max_tokens/max_price_per_token), so the blessed app-scoped llm door rejects it and never calls the provider or spends",
+  "pure transform, no capability: same description in, same result out, so its run is cached",
+]

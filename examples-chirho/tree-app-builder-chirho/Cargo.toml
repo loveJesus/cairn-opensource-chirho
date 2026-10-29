@@ -1,0 +1,40 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "tree-app-builder-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "The AI app-builder example: an EFFECTFUL dag that turns a business description into a deployed landing app via a bounded LLM door and a vetted template-deploy door. Pure transforms wrap the two blessed effects; the model produces only DATA, the deploy is fixed, vetted code."
+license = "MIT"
+
+# Standalone app (path-depends on the cairn engine crates; built/served via the cairn tree-build + CLI).
+[workspace]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+blake3 = "1"
+cairn-node-sdk-chirho = { path = "../../crates/cairn-node-sdk-chirho", features = ["json-chirho"] }
+cairn-node-templating-chirho = { path = "../../crates/authoring-chirho/cairn-node-templating-chirho" }
+
+[[example]]
+name = "prompt_guest_chirho"
+path = "examples/prompt_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "validate_guest_chirho"
+path = "examples/validate_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "result_guest_chirho"
+path = "examples/result_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "render_form_guest_chirho"
+path = "examples/render_form_guest_chirho.rs"
+crate-type = ["cdylib"]

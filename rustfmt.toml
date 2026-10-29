@@ -1,0 +1,15 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# Formatter config for cairn-chirho.
+# - `edition` pins 2021 so a *standalone* `rustfmt` (IDEs/agents that don't go
+#   through `cargo fmt`) parses 2021 syntax correctly instead of defaulting to
+#   edition 2015 and mis-reflowing. This is the main reason this file exists.
+# - `max_width = 100` matches the codebase: 99%+ of lines already fit within 100
+#   columns (92% within 80). It is rustfmt's default, stated explicitly so every
+#   tool agrees on the ceiling.
+#
+# The codebase is cargo-fmt-clean as of the normalization commit (recorded in
+# .git-blame-ignore-revs); `cargo fmt --check` must stay green — it is a pre-commit
+# gate (see AGENTS.md). Run `cargo fmt` freely; it is a no-op when the tree is clean.
+edition = "2021"
+max_width = 100

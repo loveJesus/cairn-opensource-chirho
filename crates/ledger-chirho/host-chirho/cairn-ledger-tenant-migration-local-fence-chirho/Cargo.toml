@@ -1,0 +1,20 @@
+# For God so loved the world, that He gave His only Begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-ledger-tenant-migration-local-fence-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Read-only local append-handoff fence witness for tenant ledger migration."
+license = "AGPL-3.0-only"
+[dependencies]
+cairn-ledger-tenant-migration-chirho = { path = "../cairn-ledger-tenant-migration-chirho" }
+cairn-writer-elector-chirho = { path = "../../../support-chirho/cairn-writer-elector-chirho" }
+cairn-writer-head-chirho = { path = "../../../support-chirho/cairn-writer-head-chirho" }
+
+[dev-dependencies]
+anyhow = "1"
+blake3 = "1"
+cairn-ledger-host-storage-chirho = { path = "../cairn-ledger-host-storage-chirho" }
+cairn-ledger-log-chirho = { path = "../../cairn-ledger-log-chirho" }
+cairn-ledger-model-chirho = { path = "../../cairn-ledger-model-chirho" }
+cairn-tenant-chirho = { path = "../../../support-chirho/cairn-tenant-chirho" }
+raft = { version = "0.7.0", default-features = false, features = ["prost-codec"] }

@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV) -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in to connect a tool</title>
+<style>
+{{style_chirho}}
+</style>
+</head>
+<body>
+<h1>Sign in to connect a tool</h1>
+<p id="refusal-no-session-chirho" class="refusal">Sign in to continue to the connection form.</p>
+<p id="refusal-invalid-credential-chirho" class="refusal">That principal or password is not right. Try again.</p>
+<p id="refusal-auth-rate-limited-chirho" class="refusal">Too many sign-in attempts. Wait a while, then try again.</p>
+<p>After you sign in, you will go on to the form that connects your tool.</p>
+<form method="post" action="/auth-chirho/login-chirho">
+<input type="hidden" name="redirect_chirho" value="{{target_chirho}}">
+<label class="field">Principal
+<input name="principal_chirho" autocomplete="username" required>
+</label>
+<label class="field">Password
+<input type="password" name="credential_chirho" autocomplete="current-password" required>
+</label>
+<button type="submit">Sign in</button>
+</form>
+</body>
+</html>

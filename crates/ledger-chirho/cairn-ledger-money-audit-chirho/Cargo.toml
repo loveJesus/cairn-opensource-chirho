@@ -1,0 +1,22 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-ledger-money-audit-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Independent second-seat money reference + differential/adversarial suite for the ledger real-core (builder-cannot-self-clear, frozen §11)."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_ledger_money_audit_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+cairn-ledger-model-chirho = { path = "../cairn-ledger-model-chirho" }
+# Acyclic DTO/trait edge for the snapshot derivation (#5298 placement): audit -> monitor only;
+# the checker crate never links this crate or any journal — its independence stays structural.
+cairn-ledger-conservation-monitor-chirho = { path = "../cairn-ledger-conservation-monitor-chirho" }
+
+[dev-dependencies]
+serde_json = "1"
+# Leaf direction: the differential/admission-RED harness (tests only) drives B's real admitted-record
+# token. `cairn-ledger-log-chirho` NEVER depends on this crate — no cycle.
+cairn-ledger-log-chirho = { path = "../cairn-ledger-log-chirho" }

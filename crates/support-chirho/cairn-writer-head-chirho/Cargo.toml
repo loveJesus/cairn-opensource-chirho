@@ -1,0 +1,27 @@
+# For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-writer-head-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Local writer-head and fence-token primitives for cairn-chirho HA shape."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_writer_head_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+blake3 = "1"
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-durable-chirho = { path = "../cairn-durable-chirho" }
+cairn-seqlog-chirho = { path = "../cairn-seqlog-chirho" }
+cairn-signer-chirho = { path = "../cairn-signer-chirho" }
+cairn-tenant-chirho = { path = "../cairn-tenant-chirho" }
+fs2 = "0.4"
+rustix = { version = "=1.1.4", features = ["fs", "process"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+ed25519-dalek = "2"
+zeroize = "1"

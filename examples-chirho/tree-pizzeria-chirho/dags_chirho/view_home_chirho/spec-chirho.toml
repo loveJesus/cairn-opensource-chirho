@@ -1,0 +1,6 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "Show Rosa's pizzeria home page — warm, static, instant."
+surface_chirho = { ins_chirho = ["request: http_request_v1"], outs_chirho = ["response: html_partial_v1"] }
+structure_chirho = ["a fully static page: render_home ignores the request, so the run caches after first serve", "no effect doors"]
+behaviors_chirho = ["greets visitors as Rosa's Pizzeria", "links to the menu and to ordering"]

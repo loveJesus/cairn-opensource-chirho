@@ -1,0 +1,27 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-roster-author-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Offline operator authoring for signed Cairn membership-roster bundles."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_roster_author_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+base64 = "0.22"
+blake3 = "1"
+cairn-replication-chirho = { path = "../../services-chirho/cairn-replication-chirho" }
+cairn-roster-config-chirho = { path = "../../stores-chirho/cairn-roster-config-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+tempfile = "3"
+
+[[bin]]
+name = "cairn-membership-roster-author-chirho"
+path = "src/bin/cairn-membership-roster-author-chirho.rs"

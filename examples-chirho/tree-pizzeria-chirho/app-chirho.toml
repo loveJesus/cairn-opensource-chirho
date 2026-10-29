@@ -1,0 +1,24 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "app-descriptor-v0-chirho"
+app_chirho = "tree-pizzeria"
+owner_chirho = "owner/replace-with-local-owner-principal"
+package_chirho = "tree-pizzeria-chirho"
+
+[root_chirho]
+dag_chirho = "view_home_chirho"
+input_mode_chirho = "plain"
+route_label_chirho = "home-chirho"
+
+# The order page, served as a named route alongside the home root. The blessed save_order reify node
+# inside place_order is what makes this route effectful — wired in the tree, surfaced at review.
+[[route_chirho]]
+dag_chirho = "place_order_chirho"
+input_mode_chirho = "plain"
+route_chirho = "order-chirho"
+
+# The order-list page — reads the persisted orders back through the blessed query door. The
+# query_orders blessed card lowers to query:orders-chirho + its identity (a metered read).
+[[route_chirho]]
+dag_chirho = "view_orders_chirho"
+input_mode_chirho = "plain"
+route_chirho = "order-list-chirho"

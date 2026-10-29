@@ -1,0 +1,9 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-status-command-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Status and review rendering helpers for thin cairn-chirho CLI shells."
+license = "AGPL-3.0-only"
+[dependencies]
+cairn-chirho = { path = "../../.." }

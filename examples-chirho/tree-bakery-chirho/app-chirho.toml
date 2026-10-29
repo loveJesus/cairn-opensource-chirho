@@ -1,0 +1,15 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# App-level descriptor for Honeyhill Bakery — a fictional small-business landing page, built as a
+# cairn app on the generic engine. tree-build combines this with the dag tree to emit the
+# app-source manifest.
+schema_chirho = "app-descriptor-v0-chirho"
+app_chirho = "tree-bakery"
+owner_chirho = "owner/replace-with-local-owner-principal"
+package_chirho = "tree-bakery-chirho"
+
+# The landing page served at the app root.
+[root_chirho]
+dag_chirho = "view_home_chirho"
+input_mode_chirho = "plain"
+route_label_chirho = "bakery-chirho"

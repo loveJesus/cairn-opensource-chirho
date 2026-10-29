@@ -1,0 +1,8 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Validate the untrusted order and wrap the durable record in a scoped write request."
+behaviors_chirho = [
+  "accepts a table (1..200) and 1..40 item lines of quantity 1..50",
+  "rejects bad input with a kind reason rather than an error",
+  "emits a scoped-write-store request keyed by the order's content hash",
+]

@@ -1,0 +1,14 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "Read the signed-in viewer's workspace name through the host-scoped state door."
+surface_chirho = { ins_chirho = ["request: http_request_v1"], outs_chirho = ["page: html_partial_v1"] }
+structure_chirho = [
+  "the pure builder chooses one fixed logical key but cannot choose the app or viewer scope",
+  "the private request-user edge reaches the least-authority read-store door",
+  "the private typed response reaches a pure template renderer and remains private at the sink",
+]
+behaviors_chirho = [
+  "anonymous requests are refused before this DAG runs",
+  "the host derives the app and viewer scope from verified runtime context",
+  "the template renders the viewer-private response without putting markup in handwritten Rust",
+]

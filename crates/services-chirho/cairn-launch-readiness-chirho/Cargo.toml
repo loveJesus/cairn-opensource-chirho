@@ -1,0 +1,20 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-launch-readiness-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Launch-readiness operator evidence report for cairn-chirho."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_launch_readiness_chirho"
+path = "src/lib.rs"
+
+[features]
+operator-smoke-tests-chirho = ["cairn-operator-smoke-chirho/operator-smoke-tests-chirho"]
+
+[dependencies]
+anyhow = "1.0.102"
+cairn-chirho = { path = "../../..", features = ["prototype-full-chirho"] }
+cairn-operator-smoke-chirho = { path = "../cairn-operator-smoke-chirho" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

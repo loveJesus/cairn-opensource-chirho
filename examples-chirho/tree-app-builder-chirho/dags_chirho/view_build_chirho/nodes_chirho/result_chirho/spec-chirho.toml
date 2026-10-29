@@ -1,0 +1,8 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Pure: render the JS-free result page from the deploy receipt (the live app URL and app id)."
+behaviors_chirho = [
+  "reads deploy_response (deploy_response_v1) and renders the 'your app is live' page with the live URL and app id",
+  "routes every dynamic string through the kit escaper, so the JS-free page is safe whatever the deploy returned",
+  "pure transform, no capability: same receipt in, same page out, so its run is cached",
+]

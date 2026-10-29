@@ -1,0 +1,17 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-node-templating-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Dep-light, npm-free HTML templating + UI kit for cairn app render nodes: one correct HTML escape, a page shell, htmx helpers, components, and a Tailwind-lite utility CSS."
+license = "MIT"
+
+# Standalone: not a member of the engine workspace (apps path-depend on it; build/test by cd-ing in).
+[workspace]
+
+[lib]
+name = "cairn_node_templating_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }

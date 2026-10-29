@@ -1,0 +1,41 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-drill-root-layout-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Item-6 healing-drill test-kind SELECTED-ROOT LAYOUT schema + a local (no-host) validator that confirms a freshly-staged drill root satisfies the geo-node's custody bindings and enforces the drill-namespace path convention. Reuses the geo-node custody checks/primitives; creates no root, signs nothing, serves nothing."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_drill_root_layout_chirho"
+path = "src/lib.rs"
+
+# The validator reads the REAL filesystem (file owner/mode, derived group, canonicalized root
+# binding, persisted writer era), so it cannot be run from a workstation against a remote path.
+# This is the host-side runner; it validates and prints, and creates/signs/serves nothing.
+[[bin]]
+name = "cairn-drill-root-layout-verify-chirho"
+path = "src/bin/cairn-drill-root-layout-verify-chirho.rs"
+
+[build-dependencies]
+# Build-script half only: embeds the source commit for the runner's `--version`.
+cairn-build-identity-chirho = { path = "../../support-chirho/cairn-build-identity-chirho", features = [
+    "build-script-chirho",
+] }
+
+# Reuses the EXISTING geo-node custody checks and their public primitives rather than the geo-node
+# binary: the two file-custody checks come from their owning crates (elector-http cluster custody,
+# ledger-host ledger custody), and the two root bindings are recomposed from the identical public
+# primitives the geo-node's private checks call (`consistency_group_for_root_chirho`,
+# `tenant_root_chirho` + canonicalize). It deliberately does NOT depend on
+# `cairn-ledger-geo-node-chirho`, so a preflight schema/validator crate never links the serve stack.
+[dependencies]
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# The `--version` surface: a staged binary must be able to name its own tree.
+cairn-build-identity-chirho = { path = "../../support-chirho/cairn-build-identity-chirho" }
+cairn-config-chirho = { path = "../../support-chirho/cairn-config-chirho" }
+cairn-ledger-host-chirho = { path = "../cairn-ledger-host-chirho" }
+cairn-tenant-chirho = { path = "../../support-chirho/cairn-tenant-chirho" }
+cairn-writer-elector-http-chirho = { path = "../../stores-chirho/cairn-writer-elector-http-chirho" }
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }

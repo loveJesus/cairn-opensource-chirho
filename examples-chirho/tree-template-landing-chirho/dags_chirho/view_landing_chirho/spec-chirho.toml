@@ -1,0 +1,10 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "TODO: what this dag does."
+surface_chirho = { ins_chirho = ["request: http_request_v1"], outs_chirho = ["page: html_partial_v1"] }
+structure_chirho = [
+  "TODO: the structural rule(s) this dag must hold",
+]
+behaviors_chirho = [
+  "TODO: an observable behavior",
+]

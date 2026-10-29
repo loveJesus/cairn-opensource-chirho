@@ -1,0 +1,29 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+
+[package]
+name = "cairn-ledger-mirror-http-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Private-mesh F1 ledger append mirror adapter."
+license = "AGPL-3.0-only"
+[dependencies]
+anyhow = "1"
+axum = "0.7"
+blake3 = "1"
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-durable-chirho = { path = "../../support-chirho/cairn-durable-chirho" }
+cairn-ledger-log-chirho = { path = "../../ledger-chirho/cairn-ledger-log-chirho" }
+cairn-ledger-model-chirho = { path = "../../ledger-chirho/cairn-ledger-model-chirho" }
+cairn-mirror-chirho = { path = "../../support-chirho/cairn-mirror-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-tenant-placement-authority-chirho = { path = "../cairn-tenant-placement-authority-chirho" }
+cairn-writer-elector-chirho = { path = "../../support-chirho/cairn-writer-elector-chirho" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+tokio = { version = "1", features = ["net", "rt-multi-thread", "sync"] }
+ureq = "2"
+
+[dev-dependencies]
+cairn-placement-chirho = { path = "../../domain-chirho/cairn-placement-chirho" }
+tempfile = "3"

@@ -1,0 +1,53 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-store-indexeddb-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Browser IndexedDB ContentStore + AuditLog adapters for cairn — ASYNC (IndexedDB + Web Locks are Promise-based). Generic over a tiny KvAsyncChirho: real IndexedDB on wasm32 (feature browser-chirho), an in-memory async mock for native tests."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_store_indexeddb_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+anyhow = "1.0.102"
+blake3 = "1"
+serde_json = "1"
+base64 = "0.22"
+# Real browser IndexedDB + Web Locks binding — opt-in (feature `browser-chirho`), only meaningful on
+# wasm32. The ~2x async ceremony stays isolated in src/idb_chirho.rs behind this feature, so the
+# default build (incl. wasm32) compiles without the browser/wasm-bindgen toolchain.
+wasm-bindgen = { version = "0.2", optional = true }
+wasm-bindgen-futures = { version = "0.4", optional = true }
+js-sys = { version = "0.3", optional = true }
+futures-channel = { version = "0.3", optional = true }
+web-sys = { version = "0.3", optional = true, features = [
+    "Window",
+    "Navigator",
+    "IdbFactory",
+    "IdbOpenDbRequest",
+    "IdbDatabase",
+    "IdbObjectStore",
+    "IdbTransaction",
+    "IdbTransactionMode",
+    "IdbRequest",
+    "IdbVersionChangeEvent",
+    "Event",
+    "DomException",
+] }
+
+[features]
+# Enables the real IndexedDB + Web Locks Kv (web-sys). Off by default so the crate's logic stays
+# portable and the default build (including wasm32-unknown-unknown) needs no wasm-bindgen toolchain.
+browser-chirho = [
+    "dep:wasm-bindgen",
+    "dep:wasm-bindgen-futures",
+    "dep:js-sys",
+    "dep:futures-channel",
+    "dep:web-sys",
+]
+
+[dev-dependencies]
+cairn-store-memory-chirho = { path = "../cairn-store-memory-chirho" }
+cairn-runtime-core-chirho = { path = "../../cairn-runtime-core-chirho" }

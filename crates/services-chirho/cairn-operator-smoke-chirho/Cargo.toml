@@ -1,0 +1,37 @@
+# For God so loved the world, that He gave His only Begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-operator-smoke-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Operator smoke evidence flows for cairn-chirho."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_operator_smoke_chirho"
+path = "src/lib.rs"
+
+[features]
+operator-smoke-tests-chirho = []
+# Test-support only: the deterministic self-provisioning credits-demo LocalPhaseB fixture (secrets,
+# fresh PG database, identity-bound plan/config). NEVER enabled for the production command path.
+
+[dependencies]
+anyhow = "1.0.102"
+cairn-serve-runtime-chirho = { path = "../../cairn-serve-runtime-chirho" }
+cairn_chirho = { package = "cairn-chirho", path = "../../..", default-features = false, features = ["prototype-full-chirho"] }
+cairn-tree-build-chirho = { path = "../../authoring-chirho/cairn-tree-build-chirho" }
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }
+cairn-ledger-host-chirho = { path = "../../ledger-chirho/cairn-ledger-host-chirho" }
+cairn-ledger-regenesis-chirho = { path = "../../ledger-chirho/cairn-ledger-regenesis-chirho" }
+cairn-kind-registry-chirho = { path = "../../ledger-chirho/cairn-kind-registry-chirho" }
+cairn-ledger-model-chirho = { path = "../../ledger-chirho/cairn-ledger-model-chirho" }
+cairn-postgres-effect-chirho = { path = "../../runtime-chirho/cairn-postgres-effect-chirho" }
+postgres = "=0.19.14"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+zeroize = "1"
+tokio = { version = "1", features = ["macros", "net", "rt-multi-thread", "sync"] }
+toml = "=0.8.23"
+
+[dev-dependencies]
+cairn-ledger-regenesis-chirho = { path = "../../ledger-chirho/cairn-ledger-regenesis-chirho", features = ["test-support-chirho"] }
+cairn-durable-chirho = { path = "../../support-chirho/cairn-durable-chirho" }

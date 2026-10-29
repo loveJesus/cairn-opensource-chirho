@@ -1,0 +1,57 @@
+// For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+$brand-color-chirho: #2563eb;
+$bg-color-chirho: #f8fafc;
+$text-color-chirho: #0f172a;
+$card-bg-chirho: #ffffff;
+$muted-color-chirho: #64748b;
+$border-color-chirho: #e2e8f0;
+
+:root {
+  --brand-chirho: #{$brand-color-chirho};
+  --bg-chirho: #{$bg-color-chirho};
+  --ink-chirho: #{$text-color-chirho};
+  --surface-chirho: #{$card-bg-chirho};
+  --muted-chirho: #{$muted-color-chirho};
+  --border-chirho: #{$border-color-chirho};
+}
+
+.container-chirho {
+  transition: opacity 0.3s ease;
+  &.center-chirho {
+    margin-top: 2rem;
+  }
+}
+
+.card-chirho {
+  transform: translateY(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.topbar-chirho {
+  padding: 0.5rem 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.title-chirho {
+  font-size: 2.5rem;
+  letter-spacing: -0.025em;
+  color: var(--brand-chirho);
+}
+
+.tagline-chirho {
+  font-size: 1.25rem;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-section-chirho {
+  background-color: var(--border-chirho);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-top: 3rem;
+}

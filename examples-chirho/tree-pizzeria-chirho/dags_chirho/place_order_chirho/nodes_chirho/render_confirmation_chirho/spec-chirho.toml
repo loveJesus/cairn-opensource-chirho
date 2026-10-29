@@ -1,0 +1,8 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Render the warm htmx confirmation partial from the stored order record."
+behaviors_chirho = [
+  "confirms a received order with its table and items",
+  "shows a kind message for a rejected order",
+  "escapes untrusted item names",
+]

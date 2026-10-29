@@ -1,0 +1,19 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-ledger-transfer-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "The CF2 saga coordinator: a root-signed saga log (chain-core consumer) sequencing two-phase escrow across ledger journals — a CLIENT of the journal fences, never a money gate."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_ledger_transfer_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1"
+blake3 = "1"
+cairn-chain-core-chirho = { path = "../cairn-chain-core-chirho" }
+cairn-ledger-log-chirho = { path = "../cairn-ledger-log-chirho" }
+cairn-ledger-model-chirho = { path = "../cairn-ledger-model-chirho" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

@@ -1,0 +1,316 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Content-addressed, capability-secured, versioned dataflow DAG runtime — cairn-chirho prototype."
+license = "AGPL-3.0-only"
+[workspace]
+members = [
+    ".",
+    "crates/domain-chirho/cairn-model-agent-authority-chirho",
+    "crates/runtime-chirho/cairn-app-control-chirho",
+    "crates/runtime-chirho/cairn-model-app-chirho",
+    "crates/domain-chirho/cairn-model-agent-report-chirho",
+    "crates/domain-chirho/cairn-model-economic-chirho",
+    "crates/domain-chirho/cairn-model-gate1-chirho",
+    "crates/domain-chirho/cairn-model-identity-chirho",
+    "crates/domain-chirho/cairn-model-privacy-chirho",
+    "crates/domain-chirho/cairn-model-provider-chirho",
+    "crates/domain-chirho/cairn-placement-chirho",
+    "crates/domain-chirho/cairn-review-policy-chirho",
+    "crates/domain-chirho/cairn-usage-checkpoint-chirho",
+    "crates/services-chirho/cairn-launch-readiness-chirho",
+    "crates/services-chirho/cairn-gate1-authority-log-chirho",
+    "crates/services-chirho/cairn-learner-handover-chirho",
+    "crates/services-chirho/cairn-economic-governance-chirho",
+    "crates/support-chirho/cairn-head-removal-chirho",
+    "crates/services-chirho/cairn-dag-command-chirho",
+    "crates/services-chirho/cairn-operator-smoke-chirho",
+    "crates/services-chirho/cairn-served-llm-dev-bootstrap-chirho",
+    "crates/services-chirho/cairn-compliance-reporting-chirho",
+    "crates/services-chirho/cairn-report-command-chirho",
+    "crates/services-chirho/cairn-run-intent-preflight-chirho",
+    "crates/services-chirho/cairn-status-command-chirho",
+    "crates/services-chirho/cairn-subscribe-chirho",
+    "crates/services-chirho/cairn-subscription-control-plane-chirho",
+    "crates/services-chirho/cairn-subscription-view-review-chirho",
+    "crates/services-chirho/cairn-review-use-case-chirho",
+    "crates/cairn-cli-chirho",
+    "crates/cairn-core-chirho",
+    "crates/cairn-node-sdk-chirho",
+    "crates/cairn-projection-chirho",
+    "crates/cairn-query-chirho",
+    "crates/cairn-serve-runtime-chirho",
+    "crates/stores-chirho/cairn-store-memory-chirho",
+    "crates/stores-chirho/cairn-store-fs-chirho",
+    "crates/cairn-runtime-core-chirho",
+    "crates/ledger-chirho/cairn-chain-core-chirho",
+    "crates/ledger-chirho/cairn-effect-commit-ledger-chirho",
+    "crates/ledger-chirho/cairn-ledger-composition-chirho",
+    "crates/ledger-chirho/cairn-ledger-geo-node-chirho",
+    "crates/ledger-chirho/cairn-ledger-geo-node-testkind-chirho",
+    "crates/ledger-chirho/cairn-drill-evidence-chirho",
+    "crates/ledger-chirho/cairn-drill-root-layout-chirho",
+    "crates/ledger-chirho/cairn-ledger-host-chirho",
+    "crates/ledger-chirho/host-chirho/cairn-ledger-host-storage-chirho",
+    "crates/ledger-chirho/host-chirho/cairn-ledger-elected-head-transition-chirho",
+    "crates/ledger-chirho/host-chirho/cairn-ledger-authority-chirho",
+    "crates/ledger-chirho/host-chirho/cairn-ledger-tenant-migration-chirho",
+    "crates/ledger-chirho/host-chirho/cairn-ledger-tenant-migration-local-fence-chirho",
+    "crates/ledger-chirho/host-chirho/cairn-ledger-tenant-migration-durable-chirho",
+    "crates/ledger-chirho/host-chirho/cairn-geo-genesis-operator-chirho",
+    "crates/ledger-chirho/cairn-ledger-regenesis-chirho",
+    "crates/ledger-chirho/cairn-geo-genesis-chirho",
+    "crates/ledger-chirho/cairn-kind-registry-chirho",
+    "crates/ledger-chirho/cairn-ledger-model-chirho",
+    "crates/ledger-chirho/cairn-ledger-log-chirho",
+    "crates/ledger-chirho/cairn-ledger-sim-chirho",
+    "crates/ledger-chirho/cairn-ledger-transfer-chirho",
+    "crates/ledger-chirho/cairn-ledger-money-audit-chirho",
+    "crates/ledger-chirho/cairn-ledger-conservation-monitor-chirho",
+    "crates/ledger-chirho/cairn-ledger-read-model-chirho",
+    "crates/stores-chirho/cairn-store-localstorage-chirho",
+    "crates/stores-chirho/cairn-store-indexeddb-chirho",
+    "crates/stores-chirho/cairn-store-redb-chirho",
+    "crates/stores-chirho/cairn-replication-localfs-chirho",
+    "crates/stores-chirho/cairn-replication-http-chirho",
+    "crates/stores-chirho/cairn-store-s3-chirho",
+    "crates/stores-chirho/cairn-replica-serve-http-chirho",
+    "crates/stores-chirho/cairn-ledger-mirror-http-chirho",
+    "crates/stores-chirho/cairn-key-custody-http-chirho",
+    "crates/stores-chirho/cairn-write-relay-http-chirho",
+    "crates/stores-chirho/cairn-writer-elector-http-chirho",
+    "crates/services-chirho/cairn-replication-chirho",
+    "crates/stores-chirho/cairn-roster-config-chirho",
+    "crates/stores-chirho/cairn-roster-convergence-chirho",
+    "crates/stores-chirho/cairn-tenant-placement-authority-chirho",
+    "crates/stores-chirho/cairn-account-attribution-chirho",
+    "crates/authoring-chirho/cairn-roster-author-chirho",
+    "crates/authoring-chirho/cairn-tenant-placement-author-chirho",
+    "crates/authoring-chirho/cairn-tree-build-chirho",
+    "crates/authoring-chirho/cairn-tree-generate-chirho",
+    "crates/cairn-pages-chirho",
+    "crates/cairn-perffection-platform-chirho",
+    "crates/runtime-chirho/cairn-app-docs-chirho",
+    "crates/runtime-chirho/cairn-compile-chirho",
+    "crates/runtime-chirho/cairn-app-preview-chirho",
+    "crates/runtime-chirho/cairn-dag-author-chirho",
+    "crates/runtime-chirho/cairn-model-review-chirho",
+    "crates/runtime-chirho/cairn-model-runtime-chirho",
+    "crates/runtime-chirho/cairn-input-projection-chirho",
+    "crates/runtime-chirho/cairn-effect-commit-chirho",
+    "crates/runtime-chirho/cairn-postgres-effect-chirho",
+    "crates/runtime-chirho/cairn-llm-served-effect-chirho",
+    "crates/runtime-chirho/cairn-undo-plan-chirho",
+    "crates/runtime-chirho/cairn-pure-executor-chirho",
+    "crates/runtime-chirho/cairn-wasmtime-runner-chirho",
+    "crates/support-chirho/cairn-auth-attempt-window-chirho",
+    "crates/support-chirho/cairn-verified-prefix-view-chirho",
+    "crates/support-chirho/cairn-capability-chirho",
+    "crates/support-chirho/cairn-config-chirho",
+    "crates/support-chirho/cairn-durable-chirho",
+    "crates/support-chirho/cairn-display-chirho",
+    "crates/support-chirho/cairn-mirror-chirho",
+    "crates/support-chirho/cairn-key-custody-chirho",
+    "crates/support-chirho/cairn-operator-evidence-chirho",
+    "crates/support-chirho/cairn-secret-chirho",
+    "crates/support-chirho/cairn-seqlog-chirho",
+    "crates/support-chirho/cairn-seqlog-scan-chirho",
+    "crates/support-chirho/cairn-drill-barrier-chirho",
+    "crates/support-chirho/cairn-drill-partition-nft-chirho",
+    "crates/support-chirho/cairn-signer-chirho",
+    "crates/support-chirho/cairn-build-identity-chirho",
+    "crates/support-chirho/cairn-source-scan-chirho",
+    "crates/support-chirho/cairn-tenant-chirho",
+    "crates/support-chirho/cairn-verified-view-cache-chirho",
+    "crates/support-chirho/cairn-write-relay-chirho",
+    "crates/support-chirho/cairn-writer-elector-chirho",
+    "crates/support-chirho/cairn-writer-head-chirho",
+]
+default-members = [".", "crates/cairn-cli-chirho"]
+exclude = ["client-reactive-chirho"]
+resolver = "2"
+
+[lib]
+name = "cairn_chirho"
+path = "src/lib.rs"
+
+[[bin]]
+name = "replication_source_export_chirho"
+path = "src/bin/replication_source_export_chirho.rs"
+required-features = ["prototype-full-chirho"]
+
+[features]
+default = ["prototype-full-chirho"]
+core-chirho = []
+operator-smoke-tests-chirho = []
+serve-runtime-test-hooks-chirho = []
+prototype-full-chirho = [
+    "dep:cairn-app-control-chirho",
+    "dep:cairn-auth-attempt-window-chirho",
+    "dep:cairn-verified-prefix-view-chirho",
+    "dep:cairn-store-redb-chirho",
+    "dep:tokio",
+    "dep:axum",
+    "dep:ed25519-dalek",
+    "dep:rand_core",
+    "dep:toml",
+    "dep:ureq",
+    "dep:hmac",
+    "dep:sha2",
+    "dep:chacha20poly1305",
+    "dep:base64",
+    "dep:url",
+    "dep:libc",
+    "dep:argon2",
+    "dep:lettre",
+    "dep:cairn-compile-chirho",
+    "dep:cairn-app-preview-chirho",
+    "dep:cairn-dag-author-chirho",
+    "dep:cairn-query-chirho",
+    "dep:cairn-wasmtime-runner-chirho",
+    "dep:cairn-capability-chirho",
+    "dep:cairn-config-chirho",
+    "dep:cairn-durable-chirho",
+    "dep:cairn-display-chirho",
+    "dep:cairn-effect-commit-chirho",
+    "dep:cairn-effect-commit-ledger-chirho",
+    "dep:cairn-gate1-authority-log-chirho",
+    "dep:cairn-operator-evidence-chirho",
+    "dep:cairn-projection-chirho",
+    "dep:cairn-secret-chirho",
+    "dep:cairn-seqlog-chirho",
+    "dep:cairn-signer-chirho",
+    "dep:cairn-account-attribution-chirho",
+    "dep:cairn-head-removal-chirho",
+    "dep:cairn-ledger-log-chirho",
+    "dep:cairn-ledger-composition-chirho",
+    "dep:cairn-tenant-chirho",
+    "dep:cairn-tenant-placement-authority-chirho",
+    "dep:cairn-verified-view-cache-chirho",
+    "dep:cairn-write-relay-chirho",
+    "dep:cairn-compliance-reporting-chirho",
+    "dep:cairn-placement-chirho",
+    "dep:cairn-writer-head-chirho",
+    "dep:cairn-perffection-platform-chirho",
+    "dep:cairn-postgres-effect-chirho",
+    "dep:cairn-llm-served-effect-chirho",
+    "dep:cairn-replication-chirho",
+    "dep:cairn-replication-http-chirho",
+]
+
+[dependencies]
+# The dep-light core contract (model/cas/store/refs) lives in its own workspace crate;
+# the full prototype depends on it and re-exports it (see src/lib.rs) so there is exactly
+# one canonical definition of the core types, not a second separately-compiled copy.
+cairn-app-control-chirho = { path = "crates/runtime-chirho/cairn-app-control-chirho", optional = true }
+cairn-app-docs-chirho = { path = "crates/runtime-chirho/cairn-app-docs-chirho" }
+cairn-model-app-chirho = { path = "crates/runtime-chirho/cairn-model-app-chirho" }
+cairn-app-preview-chirho = { path = "crates/runtime-chirho/cairn-app-preview-chirho", optional = true }
+cairn-auth-attempt-window-chirho = { path = "crates/support-chirho/cairn-auth-attempt-window-chirho", optional = true }
+cairn-verified-prefix-view-chirho = { path = "crates/support-chirho/cairn-verified-prefix-view-chirho", optional = true }
+cairn-capability-chirho = { path = "crates/support-chirho/cairn-capability-chirho", optional = true }
+cairn-compile-chirho = { path = "crates/runtime-chirho/cairn-compile-chirho", optional = true }
+cairn-config-chirho = { path = "crates/support-chirho/cairn-config-chirho", optional = true }
+cairn-core-chirho = { path = "crates/cairn-core-chirho" }
+cairn-compliance-reporting-chirho = { path = "crates/services-chirho/cairn-compliance-reporting-chirho", optional = true }
+cairn-dag-author-chirho = { path = "crates/runtime-chirho/cairn-dag-author-chirho", optional = true }
+cairn-durable-chirho = { path = "crates/support-chirho/cairn-durable-chirho", optional = true }
+cairn-economic-governance-chirho = { path = "crates/services-chirho/cairn-economic-governance-chirho" }
+cairn-gate1-authority-log-chirho = { path = "crates/services-chirho/cairn-gate1-authority-log-chirho", optional = true }
+cairn-head-removal-chirho = { path = "crates/support-chirho/cairn-head-removal-chirho", optional = true }
+cairn-ledger-model-chirho = { path = "crates/ledger-chirho/cairn-ledger-model-chirho" }
+cairn-display-chirho = { path = "crates/support-chirho/cairn-display-chirho", optional = true }
+cairn-effect-commit-chirho = { path = "crates/runtime-chirho/cairn-effect-commit-chirho", optional = true }
+cairn-effect-commit-ledger-chirho = { path = "crates/ledger-chirho/cairn-effect-commit-ledger-chirho", optional = true }
+cairn-ledger-log-chirho = { path = "crates/ledger-chirho/cairn-ledger-log-chirho", optional = true }
+cairn-ledger-composition-chirho = { path = "crates/ledger-chirho/cairn-ledger-composition-chirho", optional = true }
+cairn-model-agent-authority-chirho = { path = "crates/domain-chirho/cairn-model-agent-authority-chirho" }
+cairn-model-agent-report-chirho = { path = "crates/domain-chirho/cairn-model-agent-report-chirho" }
+cairn-model-economic-chirho = { path = "crates/domain-chirho/cairn-model-economic-chirho" }
+cairn-model-gate1-chirho = { path = "crates/domain-chirho/cairn-model-gate1-chirho" }
+cairn-model-identity-chirho = { path = "crates/domain-chirho/cairn-model-identity-chirho" }
+cairn-model-privacy-chirho = { path = "crates/domain-chirho/cairn-model-privacy-chirho" }
+cairn-placement-chirho = { path = "crates/domain-chirho/cairn-placement-chirho", optional = true }
+cairn-review-policy-chirho = { path = "crates/domain-chirho/cairn-review-policy-chirho" }
+cairn-review-use-case-chirho = { path = "crates/services-chirho/cairn-review-use-case-chirho" }
+cairn-subscription-view-review-chirho = { path = "crates/services-chirho/cairn-subscription-view-review-chirho" }
+cairn-operator-evidence-chirho = { path = "crates/support-chirho/cairn-operator-evidence-chirho", optional = true }
+cairn-projection-chirho = { path = "crates/cairn-projection-chirho", optional = true }
+cairn-query-chirho = { path = "crates/cairn-query-chirho", optional = true }
+cairn-replication-chirho = { path = "crates/services-chirho/cairn-replication-chirho", optional = true }
+cairn-replication-http-chirho = { path = "crates/stores-chirho/cairn-replication-http-chirho", optional = true }
+cairn-model-review-chirho = { path = "crates/runtime-chirho/cairn-model-review-chirho" }
+cairn-model-runtime-chirho = { path = "crates/runtime-chirho/cairn-model-runtime-chirho" }
+cairn-undo-plan-chirho = { path = "crates/runtime-chirho/cairn-undo-plan-chirho" }
+cairn-secret-chirho = { path = "crates/support-chirho/cairn-secret-chirho", optional = true }
+cairn-seqlog-chirho = { path = "crates/support-chirho/cairn-seqlog-chirho", optional = true }
+cairn-signer-chirho = { path = "crates/support-chirho/cairn-signer-chirho", optional = true }
+cairn-account-attribution-chirho = { path = "crates/stores-chirho/cairn-account-attribution-chirho", optional = true }
+cairn-source-scan-chirho = { path = "crates/support-chirho/cairn-source-scan-chirho" }
+cairn-tenant-chirho = { path = "crates/support-chirho/cairn-tenant-chirho", optional = true }
+cairn-tenant-placement-authority-chirho = { path = "crates/stores-chirho/cairn-tenant-placement-authority-chirho", optional = true }
+cairn-usage-checkpoint-chirho = { path = "crates/domain-chirho/cairn-usage-checkpoint-chirho" }
+cairn-verified-view-cache-chirho = { path = "crates/support-chirho/cairn-verified-view-cache-chirho", optional = true }
+cairn-write-relay-chirho = { path = "crates/support-chirho/cairn-write-relay-chirho", optional = true }
+cairn-writer-head-chirho = { path = "crates/support-chirho/cairn-writer-head-chirho", optional = true }
+cairn-wasmtime-runner-chirho = { path = "crates/runtime-chirho/cairn-wasmtime-runner-chirho", optional = true }
+cairn-perffection-platform-chirho = { path = "crates/cairn-perffection-platform-chirho", optional = true }
+cairn-postgres-effect-chirho = { path = "crates/runtime-chirho/cairn-postgres-effect-chirho", optional = true }
+cairn-llm-served-effect-chirho = { path = "crates/runtime-chirho/cairn-llm-served-effect-chirho", optional = true }
+cairn-store-redb-chirho = { path = "crates/stores-chirho/cairn-store-redb-chirho", optional = true }
+blake3 = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1.0.102"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "sync"], optional = true }
+axum = { version = "0.7", features = ["ws"], optional = true }
+ed25519-dalek = { version = "2", features = ["rand_core"], optional = true }
+rand_core = { version = "0.6", features = ["getrandom"], optional = true }
+toml = { version = "0.8", optional = true }
+ureq = { version = "2", features = ["json"], optional = true }
+hmac = { version = "0.12", optional = true }
+sha2 = { version = "0.10", optional = true }
+chacha20poly1305 = { version = "0.10", optional = true }
+base64 = { version = "0.22", optional = true }
+url = { version = "2", optional = true }
+libc = { version = "0.2", optional = true }
+argon2 = { version = "0.5", optional = true }
+lettre = { version = "0.11", default-features = false, features = ["builder", "smtp-transport", "rustls-tls", "hostname"], optional = true }
+
+[dev-dependencies]
+cairn-ledger-elected-head-transition-chirho = { path = "crates/ledger-chirho/host-chirho/cairn-ledger-elected-head-transition-chirho" }
+cairn-writer-elector-chirho = { path = "crates/support-chirho/cairn-writer-elector-chirho" }
+cairn-app-control-chirho = { path = "crates/runtime-chirho/cairn-app-control-chirho", features = ["test-hooks-chirho"] }
+cairn-auth-attempt-window-chirho = { path = "crates/support-chirho/cairn-auth-attempt-window-chirho", features = ["test-hooks-chirho"] }
+cairn-head-removal-chirho = { path = "crates/support-chirho/cairn-head-removal-chirho", features = ["test-hooks-chirho"] }
+cairn-ledger-read-model-chirho = { path = "crates/ledger-chirho/cairn-ledger-read-model-chirho" }
+cairn-tree-build-chirho = { path = "crates/authoring-chirho/cairn-tree-build-chirho" }
+cairn-verified-view-cache-chirho = { path = "crates/support-chirho/cairn-verified-view-cache-chirho", features = ["test-hooks-chirho"] }
+cairn-usage-checkpoint-chirho = { path = "crates/domain-chirho/cairn-usage-checkpoint-chirho", features = ["test-hooks-chirho"] }
+cairn-store-fs-chirho = { path = "crates/stores-chirho/cairn-store-fs-chirho" }
+cairn-replication-localfs-chirho = { path = "crates/stores-chirho/cairn-replication-localfs-chirho" }
+cairn-replication-http-chirho = { path = "crates/stores-chirho/cairn-replication-http-chirho" }
+postgres = "=0.19.14"
+redb = "2"
+
+# Landed: serde_json (object encoding), tokio + axum (HTTP serve),
+# ed25519-dalek (effect signing).
+# Still arriving: epoch-yield + pooling allocator.
+
+# Fleet velocity P2 (spec-chirho/workflows-chirho/refactor-process-chirho/fleet-velocity-chirho.md):
+# line-tables-only keeps backtraces resolving for OUR code while cutting the debuginfo that made
+# target/ 245GB and every link ~20s; dependencies and build scripts carry no debuginfo at all.
+# One-off full-debug session: CARGO_PROFILE_DEV_DEBUG=2 cargo test -p <crate>.
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
+
+[profile.dev.build-override]
+debug = false
+
+[profile.test]
+debug = "line-tables-only"

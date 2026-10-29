@@ -1,0 +1,16 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-drill-barrier-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Item-6 harness-only reversible transport barrier — arm/disconnect/heal/status/cleanup, with network-partition and hung-driver as DISTINCT named modes."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_drill_barrier_chirho"
+path = "src/lib.rs"
+
+# DELIBERATELY EMPTY. The barrier is std-only: no elector, no driver, no ledger, no storage, no
+# signer. It moves bytes over loopback TCP and flips flags the CALLER owns. Every dependency added
+# here widens what a drill control plane can reach, so the empty list is the contract, not an
+# accident — see the crate header's blessing argument.
+[dependencies]

@@ -1,0 +1,7 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Build the fixed workspace-name viewer-state read request."
+behaviors_chirho = [
+  "emits the strict viewer-state request schema and one fixed logical key",
+  "contains no caller-selected app or principal scope",
+]

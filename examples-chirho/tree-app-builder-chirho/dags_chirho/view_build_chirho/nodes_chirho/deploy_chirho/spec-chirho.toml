@@ -1,0 +1,7 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Blessed reify door: deploy the validated params into the vetted landing template, owned by the signed-in client."
+behaviors_chirho = [
+  "deploys only a strict-validated deploy_request through its template-app-deploy:landing-v1-chirho capability",
+  "returns the deploy receipt (where the built app lives and who owns it) so the result can render it",
+]

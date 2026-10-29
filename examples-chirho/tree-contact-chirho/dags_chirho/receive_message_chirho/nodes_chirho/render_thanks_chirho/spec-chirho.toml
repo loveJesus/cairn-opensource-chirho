@@ -1,0 +1,10 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Render the warm thank-you partial for a clean message, escaped by construction."
+behaviors_chirho = [
+  "thanks the sender by name",
+  "escapes every character that could become markup",
+]
+[[example_chirho]]
+in_chirho = { clean_message = { name_chirho = "Rosa <3", body_chirho = "ciao" } }
+expect_chirho = { page_html_contains_chirho = ["Thank you, Rosa &lt;3!"] }

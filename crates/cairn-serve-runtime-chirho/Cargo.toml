@@ -1,0 +1,81 @@
+# For God so loved the world, that He gave His only Begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-serve-runtime-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Served HTTP runtime adapter for cairn-chirho applications."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_serve_runtime_chirho"
+path = "src/lib.rs"
+
+[features]
+operator-smoke-tests-chirho = []
+# Compile-time gate for the dev-only served-LLM loopback entry
+# (`serve_with_dev_llm_served_composition_chirho`). The authoritative gates are the runtime env
+# fence (`CAIRN_DEV_LLM_SERVED_CHIRHO=1`) plus the test-kind-only door that opens the resident
+# handle; this feature keeps the entry out of production builds entirely.
+dev-llm-served-chirho = []
+# Transport lifecycle only; synthetic authority and exclusive-root ownership stay in the example.
+dev-transient-review-fixture-chirho = [
+    "dep:cairn-verified-prefix-view-chirho",
+    "cairn-verified-prefix-view-chirho/dev-lifecycle-custody-chirho",
+]
+
+[dependencies]
+anyhow = "1.0.102"
+axum = { version = "0.7", features = ["ws"] }
+base64 = "0.22"
+blake3 = "1"
+cairn-app-preview-chirho = { path = "../runtime-chirho/cairn-app-preview-chirho" }
+cairn-compile-chirho = { path = "../runtime-chirho/cairn-compile-chirho" }
+cairn-config-chirho = { path = "../support-chirho/cairn-config-chirho" }
+cairn-core-chirho = { path = "../cairn-core-chirho" }
+# C5 B3-a2-ii (gpt #29883): the concrete erasure-propagation sink is composed here, above the root, so the root
+# crate keeps no key-custody dependency. B1 gives the subject digest and context; the store crate gives the store.
+cairn-key-custody-chirho = { path = "../support-chirho/cairn-key-custody-chirho" }
+cairn-key-custody-http-chirho = { path = "../stores-chirho/cairn-key-custody-http-chirho" }
+cairn-kind-registry-chirho = { path = "../ledger-chirho/cairn-kind-registry-chirho" }
+cairn-ledger-composition-chirho = { path = "../ledger-chirho/cairn-ledger-composition-chirho" }
+cairn-ledger-conservation-monitor-chirho = { path = "../ledger-chirho/cairn-ledger-conservation-monitor-chirho" }
+cairn-ledger-host-chirho = { path = "../ledger-chirho/cairn-ledger-host-chirho" }
+cairn-ledger-log-chirho = { path = "../ledger-chirho/cairn-ledger-log-chirho" }
+cairn-ledger-model-chirho = { path = "../ledger-chirho/cairn-ledger-model-chirho" }
+cairn-ledger-read-model-chirho = { path = "../ledger-chirho/cairn-ledger-read-model-chirho" }
+cairn-llm-served-effect-chirho = { path = "../runtime-chirho/cairn-llm-served-effect-chirho" }
+cairn-model-app-chirho = { path = "../runtime-chirho/cairn-model-app-chirho" }
+cairn-perffection-platform-chirho = { path = "../cairn-perffection-platform-chirho" }
+cairn-postgres-effect-chirho = { path = "../runtime-chirho/cairn-postgres-effect-chirho" }
+cairn-pure-executor-chirho = { path = "../runtime-chirho/cairn-pure-executor-chirho" }
+cairn-query-chirho = { path = "../cairn-query-chirho" }
+cairn-secret-chirho = { path = "../support-chirho/cairn-secret-chirho" }
+cairn-store-redb-chirho = { path = "../stores-chirho/cairn-store-redb-chirho" }
+cairn-tenant-chirho = { path = "../support-chirho/cairn-tenant-chirho" }
+cairn-verified-prefix-view-chirho = { path = "../support-chirho/cairn-verified-prefix-view-chirho", optional = true }
+cairn-write-relay-chirho = { path = "../support-chirho/cairn-write-relay-chirho" }
+cairn-writer-head-chirho = { path = "../support-chirho/cairn-writer-head-chirho" }
+cairn_chirho = { package = "cairn-chirho", path = "../..", default-features = false, features = ["prototype-full-chirho"] }
+postgres = "=0.19.14"
+rand = "=0.8.6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["macros", "net", "rt-multi-thread", "sync", "time"] }
+url = "2"
+
+[dev-dependencies]
+# Test-only: the growth arms count reflog reads through the real handlers.
+cairn-core-chirho = { path = "../cairn-core-chirho", features = ["test-hooks-chirho"] }
+cairn-model-privacy-chirho = { path = "../domain-chirho/cairn-model-privacy-chirho" }
+# Test-only: the erasure-propagation sink arms read the root's existing public key as the store's issuer
+# (C5 B3-a2-ii); the root crate does not re-export the signer.
+cairn-signer-chirho = { path = "../support-chirho/cairn-signer-chirho" }
+# Test-only: the app-route growth arm builds its fixture app the way the product's apps are built, from an app tree
+# the tree builder emits (agy #25834 approved this edge; the root crate's tests already take the same one).
+cairn-tree-build-chirho = { path = "../authoring-chirho/cairn-tree-build-chirho" }
+cairn-undo-plan-chirho = { path = "../runtime-chirho/cairn-undo-plan-chirho" }
+cairn_chirho = { package = "cairn-chirho", path = "../..", default-features = false, features = ["prototype-full-chirho", "serve-runtime-test-hooks-chirho"] }
+ed25519-dalek = "2"
+http-body = "1"
+# Test-only: the landed-write arm holds the read model the way a concurrent operator `query` does (PFE #25868 approved
+# this edge; the version and features match cairn-query-chirho's, so no new package is locked).
+rusqlite = { version = "0.32", features = ["bundled"] }

@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16 -->
+<meta charset="utf-8">
+<title>cairn-chirho — client demo</title>
+<body>
+  <h1>cairn-chirho: a DAG compiled to wasm, run in your browser</h1>
+  <p>input: <code id="in-chirho"></code></p>
+  <p>output (upcase &rarr; reverse, computed entirely by the compiled wasm in this page):
+    <code id="out-chirho">…</code></p>
+  <script type="module">
+    import { runNodeChirho } from "./host-chirho.js";
+    const inputChirho = "hello, cairn";
+    document.getElementById("in-chirho").textContent = inputChirho;
+    const responseChirho = await fetch("./wasm-demo-chirho");
+    const wasmChirho = new Uint8Array(await responseChirho.arrayBuffer());
+    const outputChirho = await runNodeChirho(wasmChirho, "run_chirho", new TextEncoder().encode(inputChirho));
+    document.getElementById("out-chirho").textContent = new TextDecoder().decode(outputChirho);
+  </script>
+</body>

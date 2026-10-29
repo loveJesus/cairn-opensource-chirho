@@ -1,0 +1,188 @@
+{
+  "schema_chirho": "inherited-source-layout-holds-v1-chirho",
+  "base_commit_chirho": "74e0c48393d8ec105dc45b77954adae243a2d888",
+  "layout_gate_passed_chirho": false,
+  "file_limit_chirho": 1500,
+  "directory_entry_limit_chirho": 15,
+  "generated_lockfiles_exempt_chirho": true,
+  "rust_file_holds_chirho": [
+    {
+      "path_chirho": "crates/cairn-serve-runtime-chirho/src/serve_chirho/tests_chirho/ledger_host_runtime_tests_chirho.rs",
+      "lines_chirho": 1557
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-geo-node-testkind-chirho/tests/served_llm_card_http_e2e_chirho.rs",
+      "lines_chirho": 1865
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src/resident_authority_chirho.rs",
+      "lines_chirho": 1549
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src/resident_authority_chirho/held_coordinator_chirho.rs",
+      "lines_chirho": 1641
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src/resident_authority_chirho/runtime_actor_chirho.rs",
+      "lines_chirho": 1845
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src/tests_chirho/resident_authority_tests_chirho.rs",
+      "lines_chirho": 1599
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src/tests_chirho/resident_authority_tests_chirho/write_restoration_gate_tests_chirho.rs",
+      "lines_chirho": 1877
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-log-chirho/src/tests_chirho/journal_tests_chirho.rs",
+      "lines_chirho": 1523
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-regenesis-chirho/src/tests_chirho/harness1_compensated_terminal_arms_chirho.rs",
+      "lines_chirho": 1865
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-regenesis-chirho/src/tests_chirho/harness1_success_ladder_tests_chirho.rs",
+      "lines_chirho": 1509
+    },
+    {
+      "path_chirho": "src/execution_runtime_chirho/effect_chirho.rs",
+      "lines_chirho": 1625
+    },
+    {
+      "path_chirho": "src/execution_runtime_chirho/effect_chirho/llm_served_chirho/tests_chirho.rs",
+      "lines_chirho": 2142
+    },
+    {
+      "path_chirho": "src/execution_runtime_chirho/effect_chirho/postgres_reversible_chirho/tests_chirho.rs",
+      "lines_chirho": 1516
+    }
+  ],
+  "directory_holds_chirho": [
+    {
+      "path_chirho": "crates",
+      "entries_chirho": 16
+    },
+    {
+      "path_chirho": "crates/cairn-serve-runtime-chirho/src/serve_chirho",
+      "entries_chirho": 18
+    },
+    {
+      "path_chirho": "crates/cairn-serve-runtime-chirho/src/serve_chirho/tests_chirho",
+      "entries_chirho": 19
+    },
+    {
+      "path_chirho": "crates/cairn-serve-runtime-chirho/src/serve_chirho/tests_chirho/request_access_chirho",
+      "entries_chirho": 17
+    },
+    {
+      "path_chirho": "crates/ledger-chirho",
+      "entries_chirho": 19
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-geo-genesis-chirho/src",
+      "entries_chirho": 22
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-geo-node-chirho/src",
+      "entries_chirho": 17
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src/reconciliation_chirho/current_view_chirho",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src/resident_authority_chirho",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-host-chirho/src/resident_authority_chirho/runtime_actor_chirho",
+      "entries_chirho": 17
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-log-chirho/src",
+      "entries_chirho": 17
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-regenesis-chirho/src",
+      "entries_chirho": 19
+    },
+    {
+      "path_chirho": "crates/ledger-chirho/cairn-ledger-regenesis-chirho/src/tests_chirho",
+      "entries_chirho": 29
+    },
+    {
+      "path_chirho": "crates/runtime-chirho",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "crates/services-chirho",
+      "entries_chirho": 16
+    },
+    {
+      "path_chirho": "crates/services-chirho/cairn-operator-smoke-chirho/src/credits_demo_smoke_chirho",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "crates/stores-chirho",
+      "entries_chirho": 17
+    },
+    {
+      "path_chirho": "crates/stores-chirho/cairn-tenant-placement-authority-chirho/src",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "crates/stores-chirho/cairn-tenant-placement-authority-chirho/src/attestation_stores_chirho",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "crates/support-chirho",
+      "entries_chirho": 23
+    },
+    {
+      "path_chirho": "crates/support-chirho/cairn-source-scan-chirho/src/source_scan_chirho/tests_chirho",
+      "entries_chirho": 19
+    },
+    {
+      "path_chirho": "crates/support-chirho/cairn-source-scan-chirho/src/source_scan_chirho/tests_chirho/ha2_writer_head_chirho",
+      "entries_chirho": 28
+    },
+    {
+      "path_chirho": "crates/support-chirho/cairn-tenant-chirho/src",
+      "entries_chirho": 16
+    },
+    {
+      "path_chirho": "crates/support-chirho/cairn-writer-elector-chirho/src",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "crates/support-chirho/cairn-writer-head-chirho/src",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "examples-chirho",
+      "entries_chirho": 26
+    },
+    {
+      "path_chirho": "src/app_runtime_chirho/app_chirho",
+      "entries_chirho": 15
+    },
+    {
+      "path_chirho": "src/execution_runtime_chirho/effect_chirho",
+      "entries_chirho": 17
+    },
+    {
+      "path_chirho": "src/execution_runtime_chirho/effect_chirho/run_intent_chirho",
+      "entries_chirho": 16
+    },
+    {
+      "path_chirho": "src/privacy_compliance_chirho",
+      "entries_chirho": 16
+    }
+  ]
+}

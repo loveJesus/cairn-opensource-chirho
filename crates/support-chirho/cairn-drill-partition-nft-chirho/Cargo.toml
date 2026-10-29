@@ -1,0 +1,17 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-drill-partition-nft-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Item-6 harness-only hosted transport-rule GENERATOR — the ordered nftables rule set that partitions a former owner's overlay traffic, reproducing on the wire the four admission properties the 6.1 loopback barrier enforces in memory. Generates and locally tests rules; never executes nft and never touches a host."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_drill_partition_nft_chirho"
+path = "src/lib.rs"
+
+# DELIBERATELY EMPTY. This helper only GENERATES nft rule text as data and checks the admission
+# contract; it neither runs a command nor names a host. std alone renders strings and validates
+# `Ipv4Addr`/`Duration`, so every dependency added here would widen what a drill control-plane crate
+# can reach for no reason the generator needs — the empty list is the contract, not an accident
+# (mirror of the 6.1 barrier crate's std-only blessing argument).
+[dependencies]

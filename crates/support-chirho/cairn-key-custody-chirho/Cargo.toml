@@ -1,0 +1,26 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-key-custody-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Transport-neutral private-blob key custody contract (item 7.2c): per-node custody keys, a key wrapped to one placement holder, signed custody and erasure receipts, holder tombstones and erasure completeness. No root, filesystem, network or effect dependency."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_key_custody_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+blake3 = "1"
+chacha20poly1305 = "0.10"
+ed25519-dalek = "2"
+rand_core = { version = "0.6", features = ["getrandom"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+x25519-dalek = "2.0.1"
+zeroize = "1"
+cairn-mirror-chirho = { path = "../cairn-mirror-chirho" }
+cairn-placement-chirho = { path = "../../domain-chirho/cairn-placement-chirho" }
+cairn-writer-elector-chirho = { path = "../cairn-writer-elector-chirho" }
+
+[dev-dependencies]
+cairn-tenant-placement-authority-chirho = { path = "../../stores-chirho/cairn-tenant-placement-authority-chirho" }

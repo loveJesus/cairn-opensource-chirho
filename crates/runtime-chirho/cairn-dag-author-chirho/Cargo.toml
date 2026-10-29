@@ -1,0 +1,14 @@
+# For God so loved the world, that He gave His only Begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-dag-author-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "DAG descriptor authoring helpers for cairn-chirho."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_dag_author_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+cairn-core-chirho = { path = "../../cairn-core-chirho" }

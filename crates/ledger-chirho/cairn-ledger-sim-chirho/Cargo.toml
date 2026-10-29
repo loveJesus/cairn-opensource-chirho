@@ -1,0 +1,26 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-ledger-sim-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Deterministic sim harness — fault-injecting port adapters + stateright models (Ledger Brick 2)."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_ledger_sim_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+cairn-ledger-model-chirho = { path = "../cairn-ledger-model-chirho" }
+cairn-ledger-log-chirho = { path = "../cairn-ledger-log-chirho" }
+
+[dev-dependencies]
+# The crash-matrix fixtures label fake sigs with a blake3 digest (test-only).
+blake3 = "1"
+# Test infra: the storage-agnostic seqlog segment machinery, so an in-memory `SegmentStorageChirho`
+# can be proven byte-for-byte equivalent to the filesystem impl (fs≡mem differential; crash-matrix
+# foundation). Dev-only — no production dependency on seqlog from the sim crate.
+cairn-seqlog-chirho = { path = "../../support-chirho/cairn-seqlog-chirho" }
+# stateright: embedded model checker for Model A (epoch fence) + Model B (rotation recovery).
+# Registry-verified latest stable (crates.io, 2026-07); dev-only, no production dependency.
+stateright = "0.31"

@@ -1,0 +1,27 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-roster-convergence-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "A1.3 roster-convergence: diff the running group's live membership against the fail-closed derived target roster into a typed one-step-at-a-time convergence plan. Slice 2 is the PURE plan (no elector mutation); the safe apply (slice 3) drives it through the elector primitives. Roster drives membership one-way; this crate never writes the roster and holds no head-mutation authority."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_roster_convergence_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+# The VERIFIED derived target comes from here (ElectorMemberChirho = fail-closed derive_elector_config
+# output).
+cairn-roster-config-chirho = { path = "../cairn-roster-config-chirho" }
+# The safe apply (slice 3) drives the elector's election-only ConfChange primitives (add_learner /
+# promote / remove_node) + the auth-set update. The elector mints no fence and moves no head, so this
+# stays inside the P3 no-write guard family (shadow-only).
+cairn-writer-elector-chirho = { path = "../../support-chirho/cairn-writer-elector-chirho" }
+serde = { version = "1", features = ["derive"] }
+anyhow = "1.0.102"
+
+[dev-dependencies]
+# For the signed-cluster convergence regression (the auth set only gates messages when signing is on, so
+# the degraded-remove stall the MEDIUM fixed only reproduces on a signed cluster). Not a head-mutation
+# crate, so the P3 no-write guard is unaffected.
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }

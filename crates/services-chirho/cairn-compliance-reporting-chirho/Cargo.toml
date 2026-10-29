@@ -1,0 +1,17 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-compliance-reporting-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Compliance and ops reporting for cairn-chirho: residency reports, ISO/SOC evidence packs, subject-rights tooling."
+license = "AGPL-3.0-only"
+[dependencies]
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-placement-chirho = { path = "../../domain-chirho/cairn-placement-chirho" }
+cairn-seqlog-chirho = { path = "../../support-chirho/cairn-seqlog-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-tenant-chirho = { path = "../../support-chirho/cairn-tenant-chirho" }
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }
+anyhow = "1.0.102"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

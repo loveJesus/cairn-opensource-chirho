@@ -1,0 +1,22 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-drill-evidence-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Item-6 healing-drill OBSERVER channel (D1+D3, proven observational, no key/no mutation) plus the b5-style evidence-PACKAGING harness (recursive SHA-256 manifest, self-tested verifier, reused no-leak scan, fixed nonclaims). Wires the drill's producer to the EXISTING shareable evidence packet; runs no host and executes no drill."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_drill_evidence_chirho"
+path = "src/lib.rs"
+
+# Lives in ledger-chirho (not the support-chirho drill family) because it REUSES the shareable
+# evidence packet, which is owned by `cairn-ledger-regenesis-chirho`. The dependency floor is
+# deliberately narrow: the packet + its scan (regenesis), the READ-ONLY partition cut status
+# (partition-nft), and hashing/serde. It links NO store, NO signer, and NO socket — the observer has
+# nothing to mutate through, which is the structural half of "proven observational".
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+cairn-drill-partition-nft-chirho = { path = "../../support-chirho/cairn-drill-partition-nft-chirho" }
+cairn-ledger-regenesis-chirho = { path = "../cairn-ledger-regenesis-chirho" }

@@ -1,0 +1,78 @@
+{
+  "app_chirho": "tree-template-landing",
+  "assets_chirho": [
+    {
+      "content_type_chirho": "text/css",
+      "name_chirho": "landing-chirho.css",
+      "source_chirho": {
+        "kind_chirho": "path-chirho",
+        "path_chirho": "assets_chirho/landing-chirho.css"
+      }
+    }
+  ],
+  "dags_chirho": [
+    {
+      "edges_chirho": [],
+      "id_chirho": "view_landing_dag",
+      "nodes_chirho": [
+        "render_template_landing"
+      ]
+    }
+  ],
+  "deploy_chirho": {
+    "input_mode_chirho": {
+      "kind_chirho": "plain-chirho"
+    },
+    "response_content_type_chirho": "text/html",
+    "root_chirho": {
+      "id_chirho": "view_landing_module",
+      "kind_chirho": "module-id-chirho"
+    },
+    "target_chirho": {
+      "kind_chirho": "local-deploy-chirho"
+    }
+  },
+  "modules_chirho": [
+    {
+      "dag_chirho": "view_landing_dag",
+      "id_chirho": "view_landing_module",
+      "input_bindings_chirho": [
+        {
+          "node_chirho": "render_template_landing",
+          "node_port_chirho": "in",
+          "public_name_chirho": "request_chirho"
+        }
+      ],
+      "name_chirho": "view_landing_chirho",
+      "output_bindings_chirho": [
+        {
+          "node_chirho": "render_template_landing",
+          "node_port_chirho": "out",
+          "public_name_chirho": "response_chirho"
+        }
+      ],
+      "route_labels_chirho": [
+        "landing-chirho"
+      ],
+      "version_chirho": "v1"
+    }
+  ],
+  "nodes_chirho": [
+    {
+      "entry_chirho": "render_template_landing_chirho",
+      "fuel_chirho": 50000000,
+      "id_chirho": "render_template_landing",
+      "name_chirho": "render_template_landing_chirho",
+      "source_chirho": {
+        "artifact_path_chirho": "target/wasm32-unknown-unknown/debug/examples/render_template_landing_guest_chirho.wasm",
+        "example_chirho": "render_template_landing_guest_chirho",
+        "features_chirho": [],
+        "kind_chirho": "cargo-example-chirho",
+        "manifest_path_chirho": "Cargo.toml",
+        "package_chirho": "tree-template-landing-chirho"
+      }
+    }
+  ],
+  "owner_chirho": "owner/replace-with-local-owner-principal",
+  "schema_chirho": "app-source-manifest-v1-chirho"
+}

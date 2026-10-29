@@ -1,0 +1,7 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Blessed LLM door: turn the bounded request into a model completion via the metered llm effect."
+behaviors_chirho = [
+  "runs the paid llm_chirho effect, bounded by the request's token ceiling and max price per token",
+  "metered: the caller pays per token; returns only the raw completion text for strict validation",
+]

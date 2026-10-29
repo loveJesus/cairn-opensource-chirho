@@ -1,0 +1,26 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-served-llm-dev-bootstrap-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Dev-only file-backed local ledger host bootstrap: fund a payer via the single-node regenesis mint so the served-LLM card's Hold can succeed at a local product-door root. Refuses in a production posture; no real provider, spend, host, or activation."
+license = "AGPL-3.0-only"
+[dependencies]
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ed25519-dalek = { version = "2", features = ["zeroize"] }
+zeroize = "1"
+cairn-config-chirho = { path = "../../support-chirho/cairn-config-chirho" }
+cairn-secret-chirho = { path = "../../support-chirho/cairn-secret-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-kind-registry-chirho = { path = "../../ledger-chirho/cairn-kind-registry-chirho" }
+cairn-ledger-model-chirho = { path = "../../ledger-chirho/cairn-ledger-model-chirho" }
+cairn-ledger-regenesis-chirho = { path = "../../ledger-chirho/cairn-ledger-regenesis-chirho" }
+
+[dev-dependencies]
+# The proof reads balances back through the real ledger-host read door (never the legacy
+# `ledger-balances` command, which reads a different ledger system). serve-runtime does not depend
+# on this crate or on regenesis, so this dev edge introduces no cycle.
+cairn-serve-runtime-chirho = { path = "../../cairn-serve-runtime-chirho" }
+cairn-ledger-host-chirho = { path = "../../ledger-chirho/cairn-ledger-host-chirho" }

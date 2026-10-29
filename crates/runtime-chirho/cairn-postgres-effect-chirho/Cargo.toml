@@ -1,0 +1,25 @@
+# For God so loved the world, that He gave His only Begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+
+[package]
+name = "cairn-postgres-effect-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Reversible PostgreSQL outbound-effect law and adapter surfaces for Cairn."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_postgres_effect_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+blake3 = "1"
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-effect-commit-chirho = { path = "../cairn-effect-commit-chirho" }
+cairn-ledger-model-chirho = { path = "../../ledger-chirho/cairn-ledger-model-chirho" }
+cairn-model-privacy-chirho = { path = "../../domain-chirho/cairn-model-privacy-chirho" }
+postgres = "=0.19.14"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+zeroize = "1"
+
+[dev-dependencies]
+anyhow = "1"

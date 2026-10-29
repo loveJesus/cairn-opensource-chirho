@@ -1,0 +1,8 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "blessed-card-v2-chirho"
+contract_chirho = "query"
+contract_hash_chirho = "cf4c4c06d5e5918b71cbb19cc18f2fa4d2925a3eddbbbc0adf7a7cfddbc71158"
+scope_chirho = "credits-balance-chirho"
+caller_chirho = "credits-demo-spend-role-chirho"
+max_rows_chirho = 1
+intent_chirho = "Read the reviewed account-net projection through the injected H2 composition."

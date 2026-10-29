@@ -1,0 +1,13 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-ledger-conservation-monitor-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Pure detect-only global conservation checker over verified head-consistent ledger views (CF4)."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_ledger_conservation_monitor_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+cairn-ledger-model-chirho = { path = "../cairn-ledger-model-chirho" }

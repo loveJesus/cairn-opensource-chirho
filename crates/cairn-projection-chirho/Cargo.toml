@@ -1,0 +1,20 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-projection-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "First skeleton toward canonical logical state projection materialization for Gate 1."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_projection_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+blake3 = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+cairn-core-chirho = { path = "../cairn-core-chirho" }
+cairn-model-economic-chirho = { path = "../domain-chirho/cairn-model-economic-chirho" }
+cairn-model-gate1-chirho = { path = "../domain-chirho/cairn-model-gate1-chirho" }
+cairn-model-review-chirho = { path = "../runtime-chirho/cairn-model-review-chirho" }

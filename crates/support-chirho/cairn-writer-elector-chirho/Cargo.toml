@@ -1,0 +1,30 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-writer-elector-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "P4 writer-election port (D4 swappable, shadow-mode-first): reports WHO the elected writer is for a consistency group so the fence-mint seam can be observed against it. Election-only — never mints or commits; the local fence lock still mints in shadow. A single-node baseline and (later) a raft-rs impl satisfy the same port."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_writer_elector_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+blake3 = "1"
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-durable-chirho = { path = "../cairn-durable-chirho" }
+cairn-seqlog-chirho = { path = "../cairn-seqlog-chirho" }
+cairn-signer-chirho = { path = "../cairn-signer-chirho" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1.0.102"
+# D1 embedded-Raft (shadow-first). Consensus core only — we keep our own store + drive the loop.
+# prost-codec avoids raft-proto's protobuf-build/protoc build-script (which mis-parses protoc 34.x).
+raft = { version = "0.7.0", default-features = false, features = ["prost-codec"] }
+slog = "2.7"
+# prost encodes/decodes eraftpb messages for the wire so a transport moves bytes, not raft types.
+prost = "0.11"
+rand_core = { version = "0.6", features = ["getrandom"] }
+
+[dev-dependencies]
+cairn-writer-head-chirho = { path = "../cairn-writer-head-chirho" }

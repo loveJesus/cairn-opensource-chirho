@@ -1,0 +1,16 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-build-identity-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "One mechanism by which a cairn binary can name the source tree that produced its bytes: a build-script commit embed plus the version-flag surface that prints it."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_build_identity_chirho"
+path = "src/lib.rs"
+
+[features]
+# The build-script half spawns `git`. Only a build script needs it, and under resolver = "2" cargo
+# resolves build-dependency features separately from normal ones -- so a node binary that depends on
+# this crate for the version SURFACE does not link the subprocess-spawning half at all.
+build-script-chirho = []

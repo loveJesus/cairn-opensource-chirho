@@ -1,0 +1,23 @@
+# For God so loved the world, that He gave His only begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-head-removal-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Signed head-removal evidence primitives for cairn-chirho."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_head_removal_chirho"
+path = "src/lib.rs"
+
+[features]
+default = []
+test-hooks-chirho = []
+
+[dependencies]
+anyhow = "1.0.102"
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-seqlog-chirho = { path = "../cairn-seqlog-chirho" }
+cairn-signer-chirho = { path = "../cairn-signer-chirho" }
+cairn-writer-head-chirho = { path = "../cairn-writer-head-chirho" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

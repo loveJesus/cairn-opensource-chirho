@@ -1,0 +1,13 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "The JS-free landing form where a signed-in user types a business description and POSTs it to the build route."
+surface_chirho = { ins_chirho = ["request: http_request_v1"], outs_chirho = ["page: html_partial_v1"] }
+structure_chirho = [
+  "a single pure node (render_form_chirho) with no capabilities renders the whole page, so the form view can never touch the world",
+  "the form POSTs to the build route (the view_build dag); this dag itself performs no LLM call and no deploy",
+]
+behaviors_chirho = [
+  "serves a JS-free page (no script, htmx not loaded) with a heading, a short helper line, and a form",
+  "the form is a single description textarea plus a submit, POSTing to /app-chirho/tree-app-builder/build-chirho",
+  "the page is static: it ignores the incoming request content, so the same form renders for everyone and the run is cached",
+]

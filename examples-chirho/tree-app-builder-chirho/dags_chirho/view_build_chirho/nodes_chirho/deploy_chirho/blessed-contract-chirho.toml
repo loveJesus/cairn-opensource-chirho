@@ -1,0 +1,13 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# This role binds a BLESSED CONTRACT, not app code: it names the `template-app-deploy` contract from
+# the published catalog, pins that catalog entry by canonical BLAKE3 hash, and declares the template
+# scope it deploys into. The builder fails closed on unknown, incomplete, or hash-drifted contracts —
+# an app author can request the vetted deploy effect, never mint it. This lowers to the engine's
+# template-app-deploy:<scope> capability over the shared inert template wasm; engine-signed registry
+# records are the later hardening step.
+schema_chirho = "blessed-card-v2-chirho"
+contract_chirho = "template-app-deploy"
+contract_hash_chirho = "6df0d0a4c8a1dc0002e9e6b69809b8350065aec6bac17d22b6ae8365ae861ce4"
+scope_chirho = "landing-v1-chirho"
+intent_chirho = "Deploy the validated params into the vetted landing template, owned by the signed-in client."

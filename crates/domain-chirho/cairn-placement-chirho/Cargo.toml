@@ -1,0 +1,15 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-placement-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Pure host-placement ranking core (hard constraints, weighted affinities, deterministic scoring) for cairn-chirho."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_placement_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+serde = { version = "1", features = ["derive"] }

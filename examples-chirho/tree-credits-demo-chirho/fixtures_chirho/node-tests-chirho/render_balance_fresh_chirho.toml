@@ -1,0 +1,12 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "tree-build-node-fixture-v1-chirho"
+fixture_chirho = "render_balance_fresh_chirho"
+node_chirho = "view_balance_chirho/render_balance_chirho"
+wasm_chirho = "target/wasm32-unknown-unknown/debug/examples/render_balance_guest_chirho.wasm"
+entry_chirho = "render_balance_chirho"
+input_chirho = "fixtures_chirho/node-inputs-chirho/render_balance_fresh_response_chirho.json"
+expected_output_chirho = "fixtures_chirho/node-expected-chirho/render_balance_fresh_output_chirho.html"
+expected_output_blake3_chirho = "f22c9191772cf537ca6f956a0a4d3094dc77490a91368b221e3ad89f1e8c375a"
+fuel_limit_chirho = 10000000
+max_output_bytes_chirho = 1048576
+max_memory_bytes_chirho = 67108864

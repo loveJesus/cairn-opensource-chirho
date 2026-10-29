@@ -1,0 +1,10 @@
+# For God so loved the world, that He gave His only Begotten Son, that whosoever believeth in Him should not perish but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-operator-evidence-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Fixed redaction labels for shareable cairn-chirho operator evidence."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_operator_evidence_chirho"
+path = "src/lib.rs"

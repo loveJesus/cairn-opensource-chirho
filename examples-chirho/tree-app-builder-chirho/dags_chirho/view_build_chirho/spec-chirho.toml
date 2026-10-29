@@ -1,0 +1,15 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "Turn a signed-in user's free-text business description into a deployed landing app via a bounded LLM call and the vetted template-deploy effect."
+surface_chirho = { ins_chirho = ["request: http_request_v1"], outs_chirho = ["page: html_partial_v1"] }
+structure_chirho = [
+  "three pure nodes (prompt, validate, result) wrap the two blessed doors: prompt builds the bounded LLM request, validate turns raw model output into a vetted deploy request, and result renders the deploy receipt without capabilities",
+  "llm and deploy are the only effect doors: llm holds the bounded paid:llm capability, deploy holds the template-app-deploy:landing-v1-chirho capability; app code can request them, never mint them",
+  "the raw model completion must pass the strict validate node before the deploy door can fire, so only a vetted deploy_request reaches the template",
+]
+behaviors_chirho = [
+  "accepts a business description, generates landing content under a hard token/price budget, and deploys it into the vetted landing template owned by the signed-in client",
+  "fails closed on invalid or off-shape model output: no app is deployed and no template render fires",
+  "identical builds are idempotent (the deploy request carries a content-keyed idempotency key)",
+  "renders a JS-free result page with the live app URL and id",
+]

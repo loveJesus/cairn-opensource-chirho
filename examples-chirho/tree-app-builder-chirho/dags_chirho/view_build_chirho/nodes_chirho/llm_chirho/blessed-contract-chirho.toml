@@ -1,0 +1,16 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# This role binds a BLESSED CONTRACT, not app code: it names the `llm` contract from the published
+# catalog, pins that catalog entry by canonical BLAKE3 hash, and declares the caller plus the hard
+# budget (token ceiling + max price per token) it requests. The builder fails closed on unknown,
+# incomplete, or hash-drifted contracts — an app author can request the bounded LLM effect, never
+# mint it. This lowers to the engine's paid:llm_chirho:<caller> capability over the shared inert
+# template wasm; engine-signed registry records are the later hardening step.
+schema_chirho = "blessed-card-v2-chirho"
+contract_chirho = "llm"
+contract_hash_chirho = "ef3cb8e43acc061f5d76196060ecd6eeaf7921d312fc00577e5eea15297b8742"
+scope_chirho = "perffection-app-builder-llm-v1-chirho"
+caller_chirho = "session-user-chirho"
+max_tokens_chirho = 800
+max_price_per_token_chirho = 5
+intent_chirho = "Generate site content from the user's description via the bounded LLM effect."

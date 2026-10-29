@@ -1,0 +1,8 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Pure trust boundary: strict-validate the raw model completion as landing params, then emit the vetted template-deploy request."
+behaviors_chirho = [
+  "reads completion (llm_completion_v1) and parses it as one JSON object with exactly the landing keys (non-empty strings, 2..4 features each with exactly a non-empty title and body)",
+  "on valid output derives a URL-safe slug and a content-keyed idempotency key and emits the deploy_request",
+  "fails closed on any invalid or off-shape output: emits the error envelope instead of a deploy_request, so the deploy door never fires on bad model output",
+]

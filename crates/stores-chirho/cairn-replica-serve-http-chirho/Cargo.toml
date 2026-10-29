@@ -1,0 +1,33 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-replica-serve-http-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "GET-only read-replica artifact serving over a mounted ref-snapshot view: the M150 public runtime-package contract (capability-free, executable-only, by hash) from a verified replica store — zero execution, zero effects, no write surface, mesh-bind by default."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_replica_serve_http_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-replication-chirho = { path = "../../services-chirho/cairn-replication-chirho" }
+cairn-replication-http-chirho = { path = "../cairn-replication-http-chirho" }
+cairn-model-runtime-chirho = { path = "../../runtime-chirho/cairn-model-runtime-chirho" }
+cairn-store-fs-chirho = { path = "../cairn-store-fs-chirho" }
+axum = "0.7"
+tokio = { version = "1", features = ["rt-multi-thread", "net", "sync", "time"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1.0.102"
+
+# Dev-deps stay allowlist-clean (no head-mutation crate, no `cairn-chirho`) so the P3
+# no-write-authority guard stays strict on this crate's whole dependency surface.
+[dev-dependencies]
+cairn-replication-localfs-chirho = { path = "../cairn-replication-localfs-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-ledger-model-chirho = { path = "../../ledger-chirho/cairn-ledger-model-chirho" }
+cairn-ledger-read-model-chirho = { path = "../../ledger-chirho/cairn-ledger-read-model-chirho" }
+ureq = "2"
+tower = { version = "0.5", features = ["util"] }
+wat = "1.250.0"

@@ -1,0 +1,9 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Pure: render the static JS-free 'describe your app' form, no capabilities."
+behaviors_chirho = [
+  "reads request (http_request_v1) per the surface convention but ignores its content (the form is static)",
+  "renders a JS-free page (no script, htmx not loaded): a heading, a short helper line, and a description form that POSTs to the build route",
+  "routes its only free text (the placeholder) through the kit escaper, so the JS-free page is safe by construction",
+  "pure transform, no capability: same input in, same page out, so its run is cached",
+]

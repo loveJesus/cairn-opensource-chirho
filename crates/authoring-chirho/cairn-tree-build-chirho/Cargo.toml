@@ -1,0 +1,24 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-tree-build-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Toolchain: compiles a directory-structure-IS-DAG app tree into cairn app-source manifests, with friendly fail-closed checking."
+license = "AGPL-3.0-only"
+[dependencies]
+anyhow = "1.0.102"
+blake3 = "1.8.2"
+cairn-capability-chirho = { path = "../../support-chirho/cairn-capability-chirho" }
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+cairn-input-projection-chirho = { path = "../../runtime-chirho/cairn-input-projection-chirho" }
+cairn-model-app-chirho = { path = "../../runtime-chirho/cairn-model-app-chirho" }
+cairn-undo-plan-chirho = { path = "../../runtime-chirho/cairn-undo-plan-chirho" }
+cairn-wasmtime-runner-chirho = { path = "../../runtime-chirho/cairn-wasmtime-runner-chirho" }
+grass = { version = "0.13.4", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+[[bin]]
+name = "tree-build-chirho"
+path = "src/bin/tree_build_chirho.rs"

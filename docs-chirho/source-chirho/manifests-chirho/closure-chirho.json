@@ -1,0 +1,11 @@
+{
+  "all_path_dependencies_local_chirho": true,
+  "declared_workspace_member_count_chirho": 120,
+  "dependency_shards_chirho": [
+    "docs-chirho/source-chirho/manifests-chirho/dependencies-chirho/0000-chirho.jsonl",
+    "docs-chirho/source-chirho/manifests-chirho/dependencies-chirho/0500-chirho.jsonl"
+  ],
+  "lock_package_count_chirho": 552,
+  "manifest_count_chirho": 130,
+  "path_dependency_edges_chirho": 597
+}

@@ -1,0 +1,50 @@
+<!-- For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16 -->
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cairn-chirho perffection intake</title>
+<script type="module" src="/htmx-lite-chirho.js"></script>
+<main>
+  <h1>Perffection Intake</h1>
+  <form
+    hx-post="/app-chirho/perffection"
+    hx-target="#perffection-intake-result-chirho"
+    hx-swap="innerHTML"
+    hx-on::after-request="document.body.dispatchEvent(new Event('perffectionIntakeListRefreshChirho'))">
+    <label>
+      Business name
+      <input name="business_name_chirho" autocomplete="organization" required>
+    </label>
+    <label>
+      Owner name
+      <input name="owner_name_chirho" autocomplete="name" required>
+    </label>
+    <label>
+      Email
+      <input name="email_chirho" type="email" autocomplete="email" required>
+    </label>
+    <label>
+      Notes
+      <textarea name="notes_chirho" required></textarea>
+    </label>
+    <button type="submit">Submit intake</button>
+  </form>
+  <div id="perffection-intake-result-chirho" aria-live="polite"></div>
+  <section>
+    <h2>Safe intake rows</h2>
+    <div
+      id="perffection-intake-list-chirho"
+      hx-post="/app-chirho/perffection/intake-list"
+      hx-trigger="load, perffectionIntakeListRefreshChirho from:body"
+      hx-target="this"
+      hx-swap="innerHTML"
+      aria-live="polite"></div>
+    <button
+      type="button"
+      hx-post="/app-chirho/perffection/intake-list"
+      hx-target="#perffection-intake-list-chirho"
+      hx-swap="innerHTML">Refresh</button>
+  </section>
+</main>
+</html>

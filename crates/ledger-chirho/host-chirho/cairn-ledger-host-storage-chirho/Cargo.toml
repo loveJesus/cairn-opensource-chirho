@@ -1,0 +1,25 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+#
+# Lane-D wave 1, stone 1: the ledger host's filesystem storage adapter, extracted from
+# cairn-ledger-host-chirho unchanged. It was the crate's only zero-outbound leaf — measured, and
+# confirmed by reading: the moved files contain no `crate::` reference at all.
+#
+# The four dependencies below are the MEASURED set, not a copied subset of the parent's manifest.
+[package]
+license = "AGPL-3.0-only"
+name = "cairn-ledger-host-storage-chirho"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+cairn-durable-chirho = { path = "../../../support-chirho/cairn-durable-chirho" }
+cairn-ledger-log-chirho = { path = "../../cairn-ledger-log-chirho" }
+rustix = { version = "=1.1.4", features = ["fs", "process"] }
+
+# DEFAULT OFF. This feature is the only vocabulary a crate boundary has for what `cfg(test)`
+# meant inside one crate: "visible to tests, absent from production". It is PRESERVATION of
+# that property, not a new capability — and it is enabled ONLY through the host's
+# [dev-dependencies], which a workspace guard pins.
+[features]
+test-hooks-chirho = []

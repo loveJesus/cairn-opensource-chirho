@@ -1,0 +1,13 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+#
+# This role binds a BLESSED CONTRACT, not app code: it names a contract from the published catalog,
+# pins that catalog entry by BLAKE3 hash, and declares the capability scope it requests. The builder
+# fails closed on unknown, incomplete, or hash-drifted contracts — an app author can request
+# impurity, never mint it. This lowers to the engine's capability-string reify node
+# (write-store:<scope>) over the shared inert template wasm; engine-signed registry records are the
+# later hardening step.
+schema_chirho = "blessed-card-v2-chirho"
+contract_chirho = "write-store"
+contract_hash_chirho = "614d12abeb18b308dd4ad0c9d4464d5d9112dc6efef2af2e3ee14e86d692b735"
+scope_chirho = "orders-chirho"
+intent_chirho = "Persist the validated order as a durable order stone."

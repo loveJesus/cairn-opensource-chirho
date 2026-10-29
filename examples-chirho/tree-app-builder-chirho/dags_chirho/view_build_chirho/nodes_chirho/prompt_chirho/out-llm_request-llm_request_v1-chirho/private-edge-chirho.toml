@@ -1,0 +1,6 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# Marks the incoming prompt-derived LLM request as a private DAG edge. The runtime stores this
+# value as a subject-bound private blob and keeps only the BLAKE3 hash in run provenance.
+schema_chirho = "private-edge-v1-chirho"
+subject_source_chirho = "request-user-chirho"

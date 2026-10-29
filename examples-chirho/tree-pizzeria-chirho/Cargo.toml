@@ -1,0 +1,47 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "tree-pizzeria-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Rosa's pizzeria — the real directory-structure-IS-DAG sample app (home, menu, order)."
+license = "MIT"
+
+# Standalone: not a member of the engine workspace.
+[workspace]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+base64 = "0.22"
+cairn-node-sdk-chirho = { path = "../../crates/cairn-node-sdk-chirho", features = ["json-chirho"] }
+cairn-node-templating-chirho = { path = "../../crates/authoring-chirho/cairn-node-templating-chirho" }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[[example]]
+name = "render_home_guest_chirho"
+path = "examples/render_home_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+# The order page (place_order): validate -> blessed save_order reify -> render confirmation.
+[[example]]
+name = "validate_order_guest_chirho"
+path = "examples/validate_order_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "render_confirmation_guest_chirho"
+path = "examples/render_confirmation_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+# The order-list page (view_orders): list_request -> blessed query_orders reify -> render order list.
+[[example]]
+name = "order_list_request_guest_chirho"
+path = "examples/order_list_request_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "render_order_list_guest_chirho"
+path = "examples/render_order_list_guest_chirho.rs"
+crate-type = ["cdylib"]

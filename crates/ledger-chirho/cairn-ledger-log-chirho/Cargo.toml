@@ -1,0 +1,20 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV)
+[package]
+name = "cairn-ledger-log-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "The single account-log engine and the I/O ports it defines (Ledger Brick 2)."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_ledger_log_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+blake3 = "1"
+cairn-effect-commit-chirho = { path = "../../runtime-chirho/cairn-effect-commit-chirho" }
+cairn-ledger-model-chirho = { path = "../cairn-ledger-model-chirho" }
+cairn-seqlog-chirho = { path = "../../support-chirho/cairn-seqlog-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV) -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect a tool to {{app_chirho}}</title>
+<style>
+{{style_chirho}}
+</style>
+</head>
+<body>
+<h1>Connect a tool to {{app_chirho}}</h1>
+<p id="refusal-request-invalid-chirho" class="refusal">That request could not be used. Choose at least one action and try again.</p>
+<p id="refusal-credential-mismatch-chirho" class="refusal">That password is not right.</p>
+<p id="refusal-rate-limited-chirho" class="refusal">Too many attempts. Wait a while, then try again.</p>
+<p id="refusal-connection-slots-full-chirho" class="refusal">Your connection slots are full. End a connection you no longer use, then try again.</p>
+<p>A connection gives one tool its own key to {{app_chirho}}, able to do only what you choose here. It lasts 30 days, unless you end it sooner.</p>
+<form method="post" action="/auth-chirho/connection-new-chirho">
+<input type="hidden" name="client_id_chirho" value="{{client_id_chirho}}">
+{{return_field_chirho}}<fieldset>
+<legend>What the tool may do</legend>
+{{actions_chirho}}
+</fieldset>
+<label class="field">Your password
+<input type="password" name="credential_chirho" autocomplete="current-password" required>
+</label>
+<p class="help">The key is shown once, on the next page, and never again. If that page does not arrive, or this form is sent twice, another connection may have been created: open your connections and end any you did not receive before creating another.</p>
+<button type="submit">Create the connection</button>
+</form>
+</body>
+</html>

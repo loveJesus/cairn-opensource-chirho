@@ -1,0 +1,46 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+license = "AGPL-3.0-only"
+name = "cairn-ledger-regenesis-chirho"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+test-support-chirho = []
+
+[dependencies]
+anyhow = "1"
+blake3 = "1"
+cairn-config-chirho = { path = "../../support-chirho/cairn-config-chirho" }
+cairn-durable-chirho = { path = "../../support-chirho/cairn-durable-chirho" }
+cairn-kind-registry-chirho = { path = "../cairn-kind-registry-chirho" }
+cairn-ledger-composition-chirho = { path = "../cairn-ledger-composition-chirho" }
+cairn-ledger-conservation-monitor-chirho = { path = "../cairn-ledger-conservation-monitor-chirho" }
+cairn-ledger-host-chirho = { path = "../cairn-ledger-host-chirho" }
+cairn-ledger-log-chirho = { path = "../cairn-ledger-log-chirho" }
+cairn-ledger-model-chirho = { path = "../cairn-ledger-model-chirho" }
+cairn-ledger-read-model-chirho = { path = "../cairn-ledger-read-model-chirho" }
+cairn-model-privacy-chirho = { path = "../../domain-chirho/cairn-model-privacy-chirho" }
+cairn-operator-evidence-chirho = { path = "../../support-chirho/cairn-operator-evidence-chirho" }
+cairn-replication-chirho = { path = "../../services-chirho/cairn-replication-chirho" }
+cairn-secret-chirho = { path = "../../support-chirho/cairn-secret-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-writer-elector-chirho = { path = "../../support-chirho/cairn-writer-elector-chirho" }
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }
+ed25519-dalek = { version = "2", features = ["zeroize"] }
+libc = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+zeroize = "1"
+
+[dev-dependencies]
+axum = "0.7"
+cairn-effect-commit-chirho = { path = "../../runtime-chirho/cairn-effect-commit-chirho" }
+cairn-ledger-geo-node-chirho = { path = "../cairn-ledger-geo-node-chirho" }
+cairn-ledger-geo-node-testkind-chirho = { path = "../cairn-ledger-geo-node-testkind-chirho" }
+cairn-ledger-mirror-http-chirho = { path = "../../stores-chirho/cairn-ledger-mirror-http-chirho" }
+cairn-placement-chirho = { path = "../../domain-chirho/cairn-placement-chirho" }
+cairn-tenant-chirho = { path = "../../support-chirho/cairn-tenant-chirho" }
+cairn-tenant-placement-authority-chirho = { path = "../../stores-chirho/cairn-tenant-placement-authority-chirho" }
+cairn-writer-elector-http-chirho = { path = "../../stores-chirho/cairn-writer-elector-http-chirho" }
+tokio = { version = "1", features = ["net", "rt-multi-thread", "sync"] }

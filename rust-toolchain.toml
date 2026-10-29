@@ -1,0 +1,9 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# Pins the toolchain for everyone (local dev, every agent, and CI) so `cargo fmt`
+# and `cargo clippy` are deterministic — no formatter drift or new lints reddening
+# CI on a Rust upgrade. Bump `channel` deliberately when you want a newer toolchain.
+[toolchain]
+channel = "1.93.0"
+components = ["rustfmt", "clippy"]
+profile = "minimal"

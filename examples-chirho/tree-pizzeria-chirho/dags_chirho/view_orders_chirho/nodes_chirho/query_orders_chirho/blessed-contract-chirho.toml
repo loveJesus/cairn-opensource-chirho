@@ -1,0 +1,16 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+#
+# This role binds a BLESSED CONTRACT, not app code: it names a contract from the published catalog,
+# pins that catalog entry by BLAKE3 hash, and declares the capability it requests. The builder fails
+# closed on unknown, incomplete, or hash-drifted contracts. The `query` contract lowers to TWO
+# engine capabilities: the metered read query:<scope>:<caller>:<max_rows> plus the paired identity
+# the query runs as. This descriptor still fixes that identity to the source-manifest client/token
+# (mirroring the
+# proven contact query node); a real authenticated caller is the hardening follow-up.
+schema_chirho = "blessed-card-v2-chirho"
+contract_chirho = "query"
+contract_hash_chirho = "cf4c4c06d5e5918b71cbb19cc18f2fa4d2925a3eddbbbc0adf7a7cfddbc71158"
+scope_chirho = "orders-chirho"
+caller_chirho = "order-query-caller"
+max_rows_chirho = 50
+intent_chirho = "Read the persisted orders back as a metered query."

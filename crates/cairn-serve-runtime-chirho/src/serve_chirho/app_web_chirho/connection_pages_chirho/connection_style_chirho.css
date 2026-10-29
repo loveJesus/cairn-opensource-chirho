@@ -1,0 +1,15 @@
+/* For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. — John 3:16 (KJV) */
+/* K4 Part 3's connection pages: one shared style, inlined into each page (its CSP allows inline style and no script). */
+body { font: 15px/1.5 system-ui, -apple-system, sans-serif; max-width: 38rem; margin: 2rem auto; padding: 0 1rem; color: #1d2939; background: #fff; }
+h1 { font-size: 1.35rem; margin: 0 0 1rem; }
+.refusal { display: none; border-left: 3px solid #b42318; padding: 0.5rem 0.75rem; background: #fef3f2; }
+.refusal:target { display: block; }
+fieldset { border: 1px solid #d0d5dd; border-radius: 6px; padding: 0.75rem 1rem; margin: 1rem 0; }
+legend { padding: 0 0.25rem; font-weight: 600; }
+label { display: block; margin: 0.4rem 0; }
+label.field { font-weight: 600; }
+label.field input { display: block; width: 100%; box-sizing: border-box; margin-top: 0.3rem; padding: 0.5rem; border: 1px solid #d0d5dd; border-radius: 4px; font: inherit; font-weight: 400; }
+.help { color: #475467; font-size: 0.92em; margin: 0.25rem 0 1rem; }
+button { padding: 0.55rem 1.1rem; font: inherit; border: 1px solid #1d2939; border-radius: 4px; background: #1d2939; color: #fff; }
+.key { padding: 0.75rem; border: 1px solid #d0d5dd; border-radius: 6px; background: #f9fafb; overflow-wrap: anywhere; }
+.key code { font-size: 1rem; }

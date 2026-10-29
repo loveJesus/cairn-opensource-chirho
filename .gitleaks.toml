@@ -1,0 +1,76 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "HTTP test helper; the literal is the standard WebSocket sample nonce, not an authorization credential."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/cairn\-serve\-runtime\-chirho/src/serve_chirho/tests_chirho/helpers_chirho/http_smoke_helpers_tests_chirho\.rs$''']
+regexes = ['''^(?:dGhlIHNhbXBsZSBub25jZQ==)$''']
+
+[[rules.allowlists]]
+description = "Caller-selected idempotency label for a private-input HTTP regression, not an authentication key."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/cairn\-serve\-runtime\-chirho/src/serve_chirho/tests_chirho/runtime_transport_tests_chirho\.rs$''']
+regexes = ['''^(?:invoke\-private\-policy\-operation\-0001\-chirho)$''']
+
+[[rules.allowlists]]
+description = "Two semantic ledger idempotency labels used by synthetic mint/fund requests, not provider credentials."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/ledger\-chirho/cairn\-effect\-commit\-ledger\-chirho/src/test_support_chirho\.rs$''']
+regexes = ['''^(?:cf3\-integration\-fund\-chirho|cf3\-integration\-mint\-chirho)$''']
+
+[[rules.allowlists]]
+description = "Semantic idempotency label in a test fixture constructor, not key material; the production file also contains a cfg(test) module."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/ledger\-chirho/cairn\-ledger\-host\-chirho/src/reconciliation_chirho/plan_chirho/converged_import_chirho\.rs$''']
+regexes = ['''^(?:gd7\-compensation\-idem\-chirho)$''']
+
+[[rules.allowlists]]
+description = "Semantic ledger idempotency label for post-commit compensation evidence, not provider authority."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/ledger\-chirho/cairn\-ledger\-host\-chirho/src/resident_authority_chirho/runtime_actor_chirho/gd7_committed_evidence_arms_chirho\.rs$''']
+regexes = ['''^(?:gd7\-cut4\-compensation\-chirho)$''']
+
+[[rules.allowlists]]
+description = "Semantic ledger idempotency label in a losing-journal test request, not an authorization key."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/ledger\-chirho/cairn\-ledger\-host\-chirho/src/tests_chirho/reconciliation_manifest_plan_tests_chirho\.rs$''']
+regexes = ['''^(?:gd7\-deposed\-mint\-chirho)$''']
+
+[[rules.allowlists]]
+description = "Six distinct Ed25519 public keys appear nine times. They are serialized public verification coordinates, not private signing seeds. OpenSSL 3 independently matched node seeds 1/2/3 and custody seeds 51/52/53 to the fixture."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/ledger\-chirho/host\-chirho/cairn\-geo\-genesis\-operator\-chirho/tests/fixtures\-chirho/plan\-chirho\.json$''']
+regexes = ['''^(?:17cb79fb2b4120f2b1ec65e4198d6e08b28e813feb01e4a400839b85e18080ce|8139770ea87d175f56a35466c34c7ecccb8d8a91b4ee37a25df60f5b8fc9b394|8a88e3dd7409f195fd52db2d3cba5d72ca6709bf1d94121bf3748801b40f6f5c|a6d2455ea3a5771aba9fcb037924114c92f9f325049f6b4269e739d9048bb869|eb2cf13bf7ae3a5f614168a1fb09272d39771ec4b8523727815e466caf8ee163|ed4928c628d1c2c6eae90338905995612959273a5c63f93636c14614ac8737d1)$''']
+
+[[rules.allowlists]]
+description = "Repeated key-generation identifier label; actual keyed digest material is a separate test byte array. The label is not the key."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/runtime\-chirho/cairn\-input\-projection\-chirho/src/tests_chirho\.rs$''']
+regexes = ['''^(?:subject\-key\-v1\-chirho)$''']
+
+[[rules.allowlists]]
+description = "The NAME of a synthetic test environment variable, not its secret value. This code is inside an inline cfg(test) module."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^crates/stores\-chirho/cairn\-store\-s3\-chirho/src/lib\.rs$''']
+regexes = ['''^(?:CAIRN_S3_TEST_OPERATOR_SECRET_CHIRHO)$''']
+
+[[rules.allowlists]]
+description = "Fixed public synthetic database row coordinate for the demo request, not an API key or private MAC key."
+condition = "AND"
+regexTarget = "secret"
+paths = ['''^examples\-chirho/tree\-credits\-demo\-chirho/fixtures_chirho/node\-expected\-chirho/build_spend_request_valid_output_chirho\.json$''']
+regexes = ['''^(?:62c2bd5bd145a1a00e980f80e14f30cd61da58755a4ccb17b64dbe407a628ef4)$''']

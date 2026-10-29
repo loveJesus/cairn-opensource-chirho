@@ -1,0 +1,34 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-tenant-placement-author-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Offline intent, node-readiness, and placement-record authoring for Cairn tenants."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_tenant_placement_author_chirho"
+path = "src/lib.rs"
+
+[[bin]]
+name = "cairn-tenant-placement-author-chirho"
+path = "src/bin/cairn-tenant-placement-author-chirho.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+blake3 = "1"
+cairn-config-chirho = { path = "../../support-chirho/cairn-config-chirho" }
+cairn-durable-chirho = { path = "../../support-chirho/cairn-durable-chirho" }
+cairn-ledger-tenant-migration-chirho = { path = "../../ledger-chirho/host-chirho/cairn-ledger-tenant-migration-chirho" }
+cairn-placement-chirho = { path = "../../domain-chirho/cairn-placement-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-tenant-placement-authority-chirho = { path = "../../stores-chirho/cairn-tenant-placement-authority-chirho" }
+cairn-tenant-chirho = { path = "../../support-chirho/cairn-tenant-chirho" }
+cairn-writer-elector-chirho = { path = "../../support-chirho/cairn-writer-elector-chirho" }
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }
+cairn-writer-elector-http-chirho = { path = "../../stores-chirho/cairn-writer-elector-http-chirho" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+cairn-tenant-chirho = { path = "../../support-chirho/cairn-tenant-chirho" }
+tempfile = "3"

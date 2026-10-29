@@ -1,0 +1,111 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-ledger-geo-node-testkind-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Test-kind geo-node variant that carries a synthetic reporting-only GD7 compensation provider through the winner-side door; never a production node."
+license = "AGPL-3.0-only"
+[build-dependencies]
+# Build-script half only (see the crate's own note on why the two halves are separated).
+cairn-build-identity-chirho = { path = "../../support-chirho/cairn-build-identity-chirho", features = [
+    "build-script-chirho",
+] }
+
+[dependencies]
+anyhow = "1"
+# The `--version` surface: a staged binary must be able to name its own tree.
+cairn-build-identity-chirho = { path = "../../support-chirho/cairn-build-identity-chirho" }
+cairn-config-chirho = { path = "../../support-chirho/cairn-config-chirho" }
+cairn-ledger-geo-node-chirho = { path = "../cairn-ledger-geo-node-chirho", features = [
+    "testkind-roster-wide-admission-chirho",
+] }
+cairn-ledger-host-chirho = { path = "../cairn-ledger-host-chirho" }
+cairn-ledger-log-chirho = { path = "../cairn-ledger-log-chirho" }
+# The activation authority signs from the root's OWN secret store: the seed is resolved in
+# memory and zeroed on drop, never copied to a file the operator has to hold.
+cairn-secret-chirho = { path = "../../support-chirho/cairn-secret-chirho" }
+zeroize = "1"
+cairn-serve-runtime-chirho = { path = "../../cairn-serve-runtime-chirho" }
+cairn-tenant-chirho = { path = "../../support-chirho/cairn-tenant-chirho" }
+# The seeding road this crate injects its E-A opener into. The edge points THIS way on purpose:
+# the seeding crate reaches the shipping CLI by three link paths, so it must never name a
+# compensation-provider door — this crate does, and no production build links this crate
+# (`testkind_geo_node_stays_a_dev_only_edge_chirho`). Measured acyclic, and the marginal closure is
+# 3 cairn crates + 8 transitive: the drill binary already carries the engine, the serve runtime and
+# the postgres client through `cairn-ledger-geo-node-chirho`.
+cairn-operator-smoke-chirho = { path = "../../services-chirho/cairn-operator-smoke-chirho" }
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-writer-elector-chirho = { path = "../../support-chirho/cairn-writer-elector-chirho" }
+# The operator-side destination MINTER signs with the operator's own key. Deliberately only here:
+# the node's authority port verifies and cannot sign, and this crate is dev-only (no production
+# build links it), so the signing capability never reaches a shipped path.
+ed25519-dalek = { version = "2", features = ["zeroize"] }
+rand_core = { version = "0.6", features = ["getrandom"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# R-4b deliberately adds serde and the serve-runtime edge for the test-kind-only operator socket.
+# That changes this package's metadata and therefore ALL three binary artifacts; the hosted staging
+# brick must rebuild, hash, and restage each selected target. The seeding binary still prints the
+# shipping CLI's own summary line rather than inventing a second seed report schema.
+
+# THE SERVE BINARY. Its argv contract is exactly
+# `<cluster-config.json> <ledger-config.toml> <selected-root>` and 6.5-e's deploy selection depends
+# on that shape, so this block is deliberately left byte-for-byte as it was when the seeding target
+# below was added.
+[[bin]]
+name = "cairn-ledger-geo-node-testkind-chirho"
+path = "src/main.rs"
+
+# The same synthetic provider and Unix operator sidecar, but behind the production-required signed
+# tenant-placement admission. CF7 uses this target to exercise real assigned-voter mirror topology;
+# the roster-wide compatibility target above remains distinct for drills that explicitly need it.
+[[bin]]
+name = "cairn-ledger-geo-node-placement-testkind-chirho"
+path = "src/bin/cairn-ledger-geo-node-placement-testkind-chirho.rs"
+
+# THE SEEDING BINARY — a SECOND target rather than a fourth argv on the node, because seeding is a
+# one-shot mutation and serving is a long-running service, and multiplexing them behind one argv
+# parse is where a mis-parse becomes a mutation. It carries no door of its own; the widening lives in
+# `ea_seeding_opener_chirho`, which the crate-level consumer it calls injects.
+[[bin]]
+name = "cairn-ledger-geo-node-testkind-seed-chirho"
+path = "src/bin/cairn-ledger-geo-node-testkind-seed-chirho.rs"
+
+# Filesystem-custodied client for the test-kind-only CF7 operator socket. It has no network mode and
+# cannot open a ledger runtime or elector; it only transports one canonical request to the already
+# running winner process.
+[[bin]]
+name = "cairn-ledger-geo-node-testkind-operator-chirho"
+path = "src/bin/cairn-ledger-geo-node-testkind-operator-chirho.rs"
+
+[dev-dependencies]
+blake3 = "1"
+cairn-durable-chirho = { path = "../../support-chirho/cairn-durable-chirho" }
+cairn-model-app-chirho = { path = "../../runtime-chirho/cairn-model-app-chirho" }
+cairn-write-relay-chirho = { path = "../../support-chirho/cairn-write-relay-chirho" }
+cairn-writer-head-chirho = { path = "../../support-chirho/cairn-writer-head-chirho" }
+rustix = { version = "=1.1.4", features = ["fs", "process"] }
+cairn-writer-elector-http-chirho = { path = "../../stores-chirho/cairn-writer-elector-http-chirho" }
+# a2 dev-context E2E proof (tests/served_llm_dev_composition_e2e_chirho.rs): drive one served-LLM
+# draft on a1's durable test-kind root through cairn-chirho's DAG runtime, over the fenced resident
+# handle this crate's `ec_normal_settlement_opener_chirho` opens. These are DEV edges only; no
+# production build links this crate (`testkind_geo_node_stays_a_dev_only_edge_chirho`), and there is
+# no cairn-chirho -> testkind normal path, so testkind -> (dev) cairn-chirho adds no reverse edge and
+# no cycle. serde_json + cairn-config/host/serve-runtime are already normal deps above.
+cairn-chirho = { path = "../../..", default-features = false, features = ["prototype-full-chirho"] }
+cairn-served-llm-dev-bootstrap-chirho = { path = "../../services-chirho/cairn-served-llm-dev-bootstrap-chirho" }
+cairn-ledger-model-chirho = { path = "../cairn-ledger-model-chirho" }
+cairn-undo-plan-chirho = { path = "../../runtime-chirho/cairn-undo-plan-chirho" }
+cairn-llm-served-effect-chirho = { path = "../../runtime-chirho/cairn-llm-served-effect-chirho" }
+# a2b loopback-HTTP served-LLM card proof (tests/served_llm_card_http_e2e_chirho.rs): serve the
+# card over real loopback HTTP and settle the money ladder. The serve-runtime dev feature enables
+# the dev-only `serve_with_dev_llm_served_composition_*_chirho` entry (test-build only). The guest
+# app (tree-llm-card) is NOT a cargo dep: it declares its own [workspace], so a workspace member
+# cannot cargo-dep it; the test builds its render_form wasm via a cargo subprocess and mirrors its
+# app/route/field constants inline (kept identical to the guest crate's own).
+cairn-serve-runtime-chirho = { path = "../../cairn-serve-runtime-chirho", features = [
+    "dev-llm-served-chirho",
+    "dev-transient-review-fixture-chirho",
+] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time"] }
+ureq = "2"

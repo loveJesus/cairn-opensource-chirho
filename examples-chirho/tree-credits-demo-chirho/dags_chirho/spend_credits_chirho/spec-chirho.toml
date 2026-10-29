@@ -1,0 +1,13 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "dag-spec-v0-chirho"
+intent_chirho = "Conditionally delete the one operator-seeded demo row through Descriptor-D and render its terminal."
+surface_chirho = { ins_chirho = ["form: form_post_v1"], outs_chirho = ["page: html_partial_v1"] }
+structure_chirho = [
+  "the pure builder accepts only one fixed item plus an opaque keyed concurrency token",
+  "the blessed postgres-reversible door owns provider, price, payer, and terminal authority",
+  "the pure renderer claims success only for a committed terminal disposition",
+]
+behaviors_chirho = [
+  "invalid item or token traps before the blessed effect",
+  "committed and definite-no-effect terminals render distinct bounded outcomes",
+]

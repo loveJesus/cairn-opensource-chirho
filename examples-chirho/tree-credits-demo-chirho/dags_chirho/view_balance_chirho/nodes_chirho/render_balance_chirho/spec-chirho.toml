@@ -1,0 +1,7 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Render the typed projection verdict without recomputing staleness or cost authority."
+behaviors_chirho = [
+  "reads response (published_projection_read_response_v2)",
+  "writes page (html_partial_v1) with no caller amount authority",
+]

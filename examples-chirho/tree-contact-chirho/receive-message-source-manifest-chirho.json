@@ -1,0 +1,85 @@
+{
+  "schema_chirho": "app-source-manifest-v1-chirho",
+  "app_chirho": "tree-contact",
+  "owner_chirho": "owner/replace-with-local-owner-principal",
+  "nodes_chirho": [
+    {
+      "id_chirho": "validate_message",
+      "name_chirho": "validate_message_chirho",
+      "entry_chirho": "validate_message_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "tree-contact-chirho",
+        "example_chirho": "validate_message_guest_chirho",
+        "features_chirho": [],
+        "manifest_path_chirho": "Cargo.toml",
+        "artifact_path_chirho": "target/wasm32-unknown-unknown/debug/examples/validate_message_guest_chirho.wasm"
+      }
+    },
+    {
+      "id_chirho": "render_thanks",
+      "name_chirho": "render_thanks_chirho",
+      "entry_chirho": "render_thanks_chirho",
+      "fuel_chirho": 50000000,
+      "source_chirho": {
+        "kind_chirho": "cargo-example-chirho",
+        "package_chirho": "tree-contact-chirho",
+        "example_chirho": "render_thanks_guest_chirho",
+        "features_chirho": [],
+        "manifest_path_chirho": "Cargo.toml",
+        "artifact_path_chirho": "target/wasm32-unknown-unknown/debug/examples/render_thanks_guest_chirho.wasm"
+      }
+    }
+  ],
+  "dags_chirho": [
+    {
+      "id_chirho": "receive_message_dag",
+      "nodes_chirho": ["validate_message", "render_thanks"],
+      "edges_chirho": [
+        {
+          "from_node_chirho": "validate_message",
+          "from_port_chirho": "out",
+          "to_node_chirho": "render_thanks",
+          "to_port_chirho": "in"
+        }
+      ]
+    }
+  ],
+  "modules_chirho": [
+    {
+      "id_chirho": "receive_message_module",
+      "dag_chirho": "receive_message_dag",
+      "name_chirho": "receive_message_chirho",
+      "version_chirho": "v1",
+      "input_bindings_chirho": [
+        {
+          "public_name_chirho": "request_chirho",
+          "node_chirho": "validate_message",
+          "node_port_chirho": "in"
+        }
+      ],
+      "output_bindings_chirho": [
+        {
+          "public_name_chirho": "response_chirho",
+          "node_chirho": "render_thanks",
+          "node_port_chirho": "out"
+        }
+      ],
+      "route_labels_chirho": ["contact-chirho"]
+    }
+  ],
+  "deploy_chirho": {
+    "root_chirho": {
+      "kind_chirho": "module-id-chirho",
+      "id_chirho": "receive_message_module"
+    },
+    "input_mode_chirho": {
+      "kind_chirho": "plain-chirho"
+    },
+    "target_chirho": {
+      "kind_chirho": "local-deploy-chirho"
+    },
+    "response_content_type_chirho": "text/html"
+  }
+}

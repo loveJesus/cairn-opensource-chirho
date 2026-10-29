@@ -1,0 +1,7 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Render the private typed viewer-state response through the reviewed HTML template."
+behaviors_chirho = [
+  "decodes only the fixed workspace-name value and exact response schema",
+  "escapes the private name through Askama and renders a bounded unavailable state on malformed input",
+]

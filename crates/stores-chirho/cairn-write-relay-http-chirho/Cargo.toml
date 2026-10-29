@@ -1,0 +1,26 @@
+# For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life. - John 3:16 (KJV)
+[package]
+name = "cairn-write-relay-http-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Private-mesh HTTP adapter for bounded authenticated one-hop served-write relay."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_write_relay_http_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+anyhow = "1.0.102"
+axum = "0.7"
+cairn-signer-chirho = { path = "../../support-chirho/cairn-signer-chirho" }
+cairn-roster-config-chirho = { path = "../cairn-roster-config-chirho" }
+cairn-write-relay-chirho = { path = "../../support-chirho/cairn-write-relay-chirho" }
+cairn-writer-elector-chirho = { path = "../../support-chirho/cairn-writer-elector-chirho" }
+cairn-writer-elector-http-chirho = { path = "../cairn-writer-elector-http-chirho" }
+tokio = { version = "1", features = ["rt-multi-thread", "net", "sync", "time"] }
+ureq = { version = "2", features = ["json"] }
+
+[dev-dependencies]
+blake3 = "1"
+tempfile = "3"
+url = "2"

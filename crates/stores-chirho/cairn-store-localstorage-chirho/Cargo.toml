@@ -1,0 +1,28 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-store-localstorage-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "Browser localStorage ContentStore + AuditLog adapters for cairn — synchronous (localStorage is sync, no async needed). Generic over a tiny KvChirho: localStorage on wasm32, in-memory for native tests."
+license = "AGPL-3.0-only"
+[lib]
+name = "cairn_store_localstorage_chirho"
+path = "src/lib.rs"
+
+[dependencies]
+cairn-core-chirho = { path = "../../cairn-core-chirho" }
+anyhow = "1.0.102"
+blake3 = "1"
+serde_json = "1"
+base64 = "0.22"
+# Real browser localStorage binding — opt-in (feature `browser-chirho`), only meaningful on wasm32.
+wasm-bindgen = { version = "0.2", optional = true }
+web-sys = { version = "0.3", features = ["Window", "Storage"], optional = true }
+
+[features]
+# Enables the real localStorage Kv (web-sys). Off by default so the crate's logic stays portable and
+# the default build (including wasm32) compiles without the browser/wasm-bindgen toolchain.
+browser-chirho = ["dep:wasm-bindgen", "dep:web-sys"]
+
+[dev-dependencies]
+cairn-store-memory-chirho = { path = "../cairn-store-memory-chirho" }

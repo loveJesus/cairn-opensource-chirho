@@ -1,0 +1,28 @@
+{# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16 #}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your workspace</title>
+</head>
+<body>
+  <main>
+    <h1>Your workspace</h1>
+    {% if model_chirho.unavailable_chirho %}
+      <p>Workspace details are unavailable right now.</p>
+    {% else %}
+      {% match model_chirho.workspace_name_chirho %}
+        {% when Some with (workspace_name_chirho) %}
+          <p>{{ workspace_name_chirho }}</p>
+          {% match model_chirho.current_version_chirho %}
+            {% when Some with (current_version_chirho) %}<p>Version {{ current_version_chirho }}</p>
+            {% when None %}
+          {% endmatch %}
+        {% when None %}
+          <p>Name this workspace when you are ready.</p>
+      {% endmatch %}
+    {% endif %}
+  </main>
+</body>
+</html>

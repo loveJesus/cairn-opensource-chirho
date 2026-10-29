@@ -1,0 +1,7 @@
+# For God so loved the world that he gave his only begotten Son, that whoever believes in him should not perish but have eternal life. - John 3:16
+schema_chirho = "node-spec-v0-chirho"
+intent_chirho = "Shape the scoped query over the orders namespace."
+behaviors_chirho = [
+  "emits a scoped-query request for the orders-chirho prefix (up to 50 rows)",
+  "ignores the request body — the list is the same query each time",
+]

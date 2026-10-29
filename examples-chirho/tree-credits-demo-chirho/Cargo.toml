@@ -1,0 +1,38 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "credits-demo-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "CF7 credits-demo composition-proof app authored through tree-build-chirho."
+license = "MIT"
+
+[workspace]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+cairn-node-sdk-chirho = { path = "../../crates/cairn-node-sdk-chirho", features = ["json-chirho"] }
+cairn-node-templating-chirho = { path = "../../crates/authoring-chirho/cairn-node-templating-chirho" }
+
+[[example]]
+name = "build_balance_query_guest_chirho"
+path = "examples/build_balance_query_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "render_balance_guest_chirho"
+path = "examples/render_balance_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "build_spend_request_guest_chirho"
+path = "examples/build_spend_request_guest_chirho.rs"
+crate-type = ["cdylib"]
+
+[[example]]
+name = "render_spend_terminal_guest_chirho"
+path = "examples/render_spend_terminal_guest_chirho.rs"
+crate-type = ["cdylib"]

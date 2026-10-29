@@ -1,0 +1,23 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+#
+# App-level descriptor for the vetted business-landing TEMPLATE — the first slice of the AI
+# app-builder, built as a cairn app on the generic engine. tree-build combines this with the dag
+# tree to emit the app-source manifest. The render is fixed, vetted code; the model later produces
+# only the params DATA it renders from.
+schema_chirho = "app-descriptor-v0-chirho"
+app_chirho = "tree-template-landing"
+owner_chirho = "owner/replace-with-local-owner-principal"
+package_chirho = "tree-template-landing-chirho"
+
+# The landing page served at the app root.
+# The render has reviewed public source-dictionary defaults, and optional runtime params can
+# override that copy for app-builder flows.
+[root_chirho]
+dag_chirho = "view_landing_chirho"
+input_mode_chirho = "plain"
+route_label_chirho = "landing-chirho"
+
+[[asset_chirho]]
+name_chirho = "landing-chirho.css"
+path_chirho = "assets_chirho/landing-chirho.css"
+content_type_chirho = "text/css"

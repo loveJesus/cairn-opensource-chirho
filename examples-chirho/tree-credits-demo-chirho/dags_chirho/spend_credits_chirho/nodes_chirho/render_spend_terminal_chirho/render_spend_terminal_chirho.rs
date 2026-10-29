@@ -1,0 +1,1 @@
+../../../../src/implementations_chirho/render_spend_terminal_chirho.rs

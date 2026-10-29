@@ -1,0 +1,51 @@
+# For God so loved the world, that He gave His only begotten Son, that whoever believes in Him should not perish but have eternal life. - John 3:16
+[package]
+name = "cairn-cli-chirho"
+version = "0.1.0"
+edition = "2021"
+description = "cairn-chirho CLI — the thin binary front-end over the cairn-chirho library."
+license = "AGPL-3.0-only"
+[[bin]]
+name = "cairn-chirho"
+path = "src/main.rs"
+doc = false
+
+[build-dependencies]
+# Build-script half only (see the crate's own note on why the two halves are separated).
+cairn-build-identity-chirho = { path = "../support-chirho/cairn-build-identity-chirho", features = [
+    "build-script-chirho",
+] }
+
+[dependencies]
+cairn-build-identity-chirho = { path = "../support-chirho/cairn-build-identity-chirho" }
+cairn-chirho = { path = "../.." }
+cairn-dag-command-chirho = { path = "../services-chirho/cairn-dag-command-chirho" }
+cairn-launch-readiness-chirho = { path = "../services-chirho/cairn-launch-readiness-chirho" }
+cairn-ledger-geo-node-chirho = { path = "../ledger-chirho/cairn-ledger-geo-node-chirho" }
+cairn-ledger-host-chirho = { path = "../ledger-chirho/cairn-ledger-host-chirho" }
+cairn-ledger-regenesis-chirho = { path = "../ledger-chirho/cairn-ledger-regenesis-chirho" }
+cairn-served-llm-dev-bootstrap-chirho = { path = "../services-chirho/cairn-served-llm-dev-bootstrap-chirho" }
+cairn-report-command-chirho = { path = "../services-chirho/cairn-report-command-chirho" }
+cairn-run-intent-preflight-chirho = { path = "../services-chirho/cairn-run-intent-preflight-chirho" }
+cairn-status-command-chirho = { path = "../services-chirho/cairn-status-command-chirho" }
+cairn-review-policy-chirho = { path = "../domain-chirho/cairn-review-policy-chirho" }
+cairn-serve-runtime-chirho = { path = "../cairn-serve-runtime-chirho" }
+cairn-seqlog-scan-chirho = { path = "../support-chirho/cairn-seqlog-scan-chirho" }
+anyhow = "1.0.102"
+clap = { version = "4", features = ["derive"] }
+serde_json = "1"
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "sync"] }
+ureq = { version = "2", features = ["json"] }
+
+[dev-dependencies]
+cairn-tenant-placement-authority-chirho = { path = "../stores-chirho/cairn-tenant-placement-authority-chirho" }
+cairn-ledger-regenesis-chirho = { path = "../ledger-chirho/cairn-ledger-regenesis-chirho", features = ["test-support-chirho"] }
+cairn-kind-registry-chirho = { path = "../ledger-chirho/cairn-kind-registry-chirho" }
+cairn-ledger-composition-chirho = { path = "../ledger-chirho/cairn-ledger-composition-chirho" }
+cairn-ledger-model-chirho = { path = "../ledger-chirho/cairn-ledger-model-chirho" }
+# Test-only: the crypto primitives moved out of cairn_chirho::effect_chirho. A DEV dependency is
+# the narrow form -- this crate's production code cannot reach the signer at all, which the compiler
+# enforces, and the single call site is #[cfg(test)]-mounted.
+cairn-signer-chirho = { path = "../support-chirho/cairn-signer-chirho" }
+ed25519-dalek = "2"
